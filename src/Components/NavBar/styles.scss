@@ -1,11 +1,13 @@
 .container-navbar {
   width: 100%;
   height: 120px;
-  background-color: #00b8a7;
+  position: fixed;
+  top: 0;
+  background-color: var(--background-navbar);
 
   .content-navbar {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     width: 100%;
     height: 100%;
 
@@ -13,6 +15,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      margin-left: 150px;
 
       img {
         width: 80px;
@@ -23,6 +26,7 @@
     .content-menu {
       display: flex;
       height: 100%;
+      margin-right: 150px;
 
       ul {
         display: flex;
@@ -35,12 +39,14 @@
 
           a {
             text-decoration: none;
-            color: #333;
+            color: var(--text-color-white);
             font-size: 20px;
             font-weight: 600;
             transition: 0.5s;
             &:hover {
-              color: #f3f3f3;
+              color: var(--hoverButton);
+              border-bottom: 1px solid var(--hoverButton);
+              transition: 0.5s;
             }
           }
         }

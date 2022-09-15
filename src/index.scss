@@ -5,11 +5,23 @@
   padding: 0;
   box-sizing: border-box;
   font-family: Popins, sans-serif;
+  overflow-x: hidden;
+}
+
+html,
+body {
+  background-color: rgb(219, 219, 219);
+  height: 100%;
+  width: 100%;
 }
 
 :root {
   --text-color: #003c64;
+  --background-navbar: #00337a;
   --text-color-white: #f3f3f3;
+  --hover-button-banner: #003cff;
+  --text-color-banner: #e5e3f0;
+  --text-color-plain: rgb(100, 100, 100);
   --background-color: #333;
   --hoverButton: #4675f7;
 }
