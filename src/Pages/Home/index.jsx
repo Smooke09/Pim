@@ -1,6 +1,8 @@
 import React, { useState } from "react";
-import NavBar from "../../Components/NavBar";
 import "./styles.scss";
+import NavBar from "../../Components/NavBar";
+import Features from "../Features";
+import About from "../About";
 
 const Home = () => {
   return (
@@ -19,20 +21,10 @@ const Home = () => {
           </div>
         </div>
       </div>
-
-      <div className="content-features-homePage">
-        <div className="content-features-text slide-in-left">
-          <h2>Vamos Começar?</h2>
-          <p>Escolha o seguro que se encaixe melhor com suas necessidades</p>
-        </div>
-        <div className="content-itens-features-homePage">
-          <div className="item-features-homePage">
-            <div className="card"></div>
-            <div className="card"></div>
-            <div className="card"></div>
-          </div>
-        </div>
-      </div>
+      <Features />
+      <About />
+      <h1>contato</h1>
+      <h1>footer</h1>
     </div>
   );
 };

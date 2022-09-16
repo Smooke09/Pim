@@ -4,6 +4,7 @@
   position: fixed;
   top: 0;
   background-color: var(--background-navbar);
+  z-index: 1;
 
   .content-navbar {
     display: flex;

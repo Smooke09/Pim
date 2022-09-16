@@ -66,6 +66,7 @@
   .content-features-homePage {
     width: 100%;
     display: flex;
+    flex-direction: column;
 
     .content-features-text {
       width: 100%;
@@ -73,6 +74,8 @@
       flex-direction: column;
       align-items: center;
       padding-top: 30px;
+      position: relative;
+      top: 50px;
 
       h2 {
         font-size: 2.6rem;
@@ -86,38 +89,5 @@
         padding-bottom: 10px;
       }
     }
-  }
-}
-
-// animacao fade
-
-.slide-in-left {
-  -webkit-animation: slide-in-left 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)
-    both;
-  animation: slide-in-left 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-}
-
-@-webkit-keyframes slide-in-left {
-  0% {
-    -webkit-transform: translateX(-1000px);
-    transform: translateX(-1000px);
-    opacity: 0;
-  }
-  100% {
-    -webkit-transform: translateX(0);
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-@keyframes slide-in-left {
-  0% {
-    -webkit-transform: translateX(-1000px);
-    transform: translateX(-1000px);
-    opacity: 0;
-  }
-  100% {
-    -webkit-transform: translateX(0);
-    transform: translateX(0);
-    opacity: 1;
   }
 }

@@ -1,0 +1,123 @@
+.content-itens-features-homePage {
+  .item-features-homePage {
+    display: flex;
+    min-width: 1200px;
+    width: 100%;
+    height: 600px;
+    justify-content: space-evenly;
+    align-items: center;
+
+    .card {
+      width: 350px;
+      height: 400px;
+      background-color: var(--text-color-white);
+      border-radius: 7px;
+      box-shadow: 3px 2px 16px 1px rgba(105, 105, 105, 0.5);
+
+      .card-content {
+        width: 100%;
+        height: 100%;
+        padding-top: 20px;
+
+        .card-image {
+          width: 100%;
+          height: 30%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+        h3 {
+          font-size: 1.8rem;
+          color: var(--text-color);
+          width: 100%;
+          text-align: center;
+        }
+
+        p {
+          font-size: 1.2rem;
+          color: var(--text-color-plain);
+          width: 100%;
+          text-align: left;
+          padding: 15px;
+          word-break: break-all;
+        }
+
+        .card-item-button {
+          width: 100%;
+          height: 110px;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+
+          button {
+            width: 200px;
+            padding: 10px;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+            background-color: var(--text-color);
+
+            a {
+              color: var(--text-color-white);
+              text-decoration: none;
+              font-weight: 400;
+              font-family: Poppins;
+            }
+
+            &:hover {
+              background-color: var(--hoverButton);
+              -moz-transition: all 0.3s;
+              -webkit-transition: all 0.3s;
+              transition: all 0.3s;
+              -moz-transform: scale(1.1);
+              -webkit-transform: scale(1.1);
+              transform: scale(1.1);
+            }
+          }
+        }
+      }
+
+      img {
+        width: 70px;
+        height: 60px;
+      }
+    }
+
+    .one {
+    }
+  }
+}
+
+// animacao fade do texto
+.slide-in-left {
+  -webkit-animation: slide-in-left 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+    both;
+  animation: slide-in-left 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+@-webkit-keyframes slide-in-left {
+  0% {
+    -webkit-transform: translateX(-1000px);
+    transform: translateX(-1000px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+@keyframes slide-in-left {
+  0% {
+    -webkit-transform: translateX(-1000px);
+    transform: translateX(-1000px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+    opacity: 1;
+  }
+}

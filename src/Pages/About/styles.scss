@@ -1,0 +1,124 @@
+.aboutPage {
+  width: 100%;
+  height: 100%;
+  background-image: url("./img/wave.svg");
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+
+  img {
+    width: 100%;
+    height: 100%;
+  }
+
+  .banner-aboutPage {
+    background-color: var(--background-navbar);
+    width: 100%;
+    height: 600px;
+    max-height: 700px;
+    display: flex;
+    padding: 30px;
+
+    .content-text {
+      display: flex;
+      flex-direction: column;
+      width: 50%;
+
+      h2 {
+        color: var(--text-color-white);
+        font-size: 2.5rem;
+        margin: 0 0 3rem 3rem;
+        padding: 1rem 0 0 0;
+      }
+
+      p {
+        width: 80%;
+        color: var(--text-color-white);
+        font-size: 1.5rem;
+        margin: 0 0 0 3rem;
+      }
+    }
+
+    .content-img {
+      width: 50%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+
+      img {
+        width: 100%;
+        height: 100%;
+        max-height: 75%;
+        max-width: 75%;
+      }
+    }
+  }
+}
+
+//fade da esquerda para direita
+.fadeInLeftBig {
+  -webkit-animation-name: fadeInLeftBig;
+  animation-name: fadeInLeftBig;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+@-webkit-keyframes fadeInLeftBig {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(-2000px, 0, 0);
+    transform: translate3d(-2000px, 0, 0);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+@keyframes fadeInLeftBig {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(-2000px, 0, 0);
+    transform: translate3d(-2000px, 0, 0);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+
+// fade da direita para esquerda
+.fadeInRightBig {
+  -webkit-animation-name: fadeInRightBig;
+  animation-name: fadeInRightBig;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+@-webkit-keyframes fadeInRightBig {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(2000px, 0, 0);
+    transform: translate3d(2000px, 0, 0);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+@keyframes fadeInRightBig {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(2000px, 0, 0);
+    transform: translate3d(2000px, 0, 0);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
