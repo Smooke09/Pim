@@ -1,7 +1,9 @@
-const express = require("express");
-const { resolve } = require("path");
-const path = require("path");
+import express from "express";
+import { resolve } from "path";
+import path from "path";
 const app = express();
+
+const __dirname = path.dirname(new URL(import.meta.url).pathname);
 
 //Estaticos rotamento dos componentes
 app.use("/", express.static(resolve(__dirname, "dist")));
