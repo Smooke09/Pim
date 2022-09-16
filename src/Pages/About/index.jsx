@@ -1,8 +1,36 @@
-import React from "react";
+import React,{useState} from "react";
+import { motion } from "framer-motion";
+
 import "./styles.scss";
 
 const About = () => {
+  const cardVariants = {};
+
   return (
+    <>
+      <motion.div
+        className="card-container"
+        initial="offscreen"
+        whileInView="onscreen"
+        onViewportEnter={() => console.log("enter")}
+        viewport={{
+          once: true,
+        }}
+      >
+        <motion.div className="about">
+          <h1>ABOUT</h1>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod
+            molestias, quibusdam, voluptate, quia consequuntur voluptates
+            voluptatem voluptas quae eaque ipsa quisquam. Molestiae, quae
+            voluptates? Quae voluptas eum quidem. Quisquam, quae.
+          </p>
+        </motion.div>
+      </motion.div>
+    </>
+  );
+
+  /*   return (
     <div className="aboutPage">
       <img src="./img/wave.svg" />
       <div className="banner-aboutPage">
@@ -20,7 +48,7 @@ const About = () => {
         </div>
       </div>
     </div>
-  );
+  ); */
 };
 
 export default About;

@@ -1,53 +1,67 @@
-.container-navbar {
+header {
   width: 100%;
-  height: 120px;
-  position: fixed;
-  top: 0;
-  background-color: var(--background-navbar);
-  z-index: 1;
+  position: relative;
 
-  .content-navbar {
+  .container-navbar {
     display: flex;
-    justify-content: space-between;
-    width: 100%;
-    height: 100%;
+    position: relative;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
-    .content-img {
+    .container-fixed-navbar {
+      width: 100%;
+      background-color: var(--background-navbar);
+      position: fixed;
       display: flex;
-      align-items: center;
       justify-content: center;
-      margin-left: 150px;
+      top: 0;
+      z-index: 99;
 
-      img {
-        width: 80px;
-        height: 80px;
-      }
-    }
-
-    .content-menu {
-      display: flex;
-      height: 100%;
-      margin-right: 150px;
-
-      ul {
+      .content-navbar {
         display: flex;
-        align-items: center;
-        justify-content: center;
+        justify-content: space-around;
+        width: 100%;
+        max-width: 1200px;
+        height: 100px;
 
-        li {
-          list-style: none;
-          margin: 0 10px;
+        .content-img {
+          display: flex;
+          align-items: center;
+          justify-content: center;
 
-          a {
-            text-decoration: none;
-            color: var(--text-color-white);
-            font-size: 20px;
-            font-weight: 600;
-            transition: 0.5s;
-            &:hover {
-              color: var(--hoverButton);
-              border-bottom: 1px solid var(--hoverButton);
-              transition: 0.5s;
+          img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+          }
+        }
+
+        .content-menu {
+          display: flex;
+          height: 100%;
+
+          ul {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            li {
+              list-style: none;
+              margin: 0 10px;
+
+              a {
+                text-decoration: none;
+                color: var(--text-color-white);
+                font-size: 20px;
+                font-weight: 600;
+                transition: 0.5s;
+                &:hover {
+                  color: var(--hoverButton);
+                  border-bottom: 1px solid var(--hoverButton);
+                  transition: 0.5s;
+                }
+              }
             }
           }
         }
