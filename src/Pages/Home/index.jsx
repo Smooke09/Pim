@@ -3,6 +3,7 @@ import "./styles.scss";
 import NavBar from "../../Components/NavBar";
 import Features from "../Features";
 import About from "../About";
+import Contact from "../Contact";
 
 const Home = () => {
   return (
@@ -23,7 +24,7 @@ const Home = () => {
       </div>
       <Features />
       <About />
-      <h1>contato</h1>
+      <Contact />
       <h1>footer</h1>
     </div>
   );

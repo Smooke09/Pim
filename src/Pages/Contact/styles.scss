@@ -1,0 +1,76 @@
+.contact-page {
+  width: 100%;
+  position: relative;
+
+  .contact-page-content {
+    background: url("./img/mulherComDuvida.jpg") no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .box-contact {
+      display: flex;
+      max-width: 1270px;
+      width: 100%;
+      justify-content: space-between;
+    }
+
+    .content-left {
+      .content-text {
+        width: 400px;
+        height: 200px;
+        h1 {
+          font-size: 1.5rem;
+          color: var(--text-color);
+          margin-bottom: 20px;
+          font-weight: 300px;
+        }
+
+        p {
+          font-size: 1rem;
+          color: var(--text-color-plain);
+          margin-bottom: 20px;
+          font-weight: 300px;
+        }
+      }
+    }
+
+    .content-right {
+      display: flex;
+      justify-content: center;
+
+      .content-text-right {
+        width: 390px;
+        h1 {
+          font-size: 1.3rem;
+          color: var(--text-color);
+          margin-bottom: 20px;
+          font-weight: 300px;
+        }
+
+        .button-contact {
+          display: flex;
+          width: 100%;
+          button {
+            padding: 10px;
+            background-color: var(--hoverButton);
+            border: none;
+            border-radius: 5px;
+            color: var(--text-color-white);
+            font-size: 1rem;
+            font-weight: 700px;
+            cursor: pointer;
+
+            &:hover {
+              background-color: var(--hover-button-banner);
+              transition: 0.5s;
+            }
+          }
+        }
+      }
+    }
+  }
+}
