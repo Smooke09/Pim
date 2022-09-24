@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import "./styles.scss";
+import "./styles.scss"; {/*Inserção dos estilo da página*/}
 
 const NavBar = () => {
   return (
@@ -10,7 +10,7 @@ const NavBar = () => {
         <div className="container-fixed-navbar">
           <nav className="content-navbar">
             <div className="content-img">
-              <img src="./img/logo.jpg" alt="logo" />
+              <img src="./img/logo1.png" alt="logo" /> {/*Inserção da logo*/}
             </div>
             <div className="content-menu">
               <ul>
