@@ -4,6 +4,7 @@ import NavBar from "../../Components/NavBar";
 import Features from "../Features";
 import About from "../About";
 import Contact from "../Contact";
+import Footer from "../Footer";
 
 const Home = () => {
   return (
@@ -25,7 +26,7 @@ const Home = () => {
       <Features />
       <About />
       <Contact />
-      <h1>footer</h1>
+      <Footer />
     </div>
   );
 };
