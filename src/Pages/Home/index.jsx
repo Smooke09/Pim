@@ -7,6 +7,11 @@ import Contact from "../Contact";
 import Footer from "../Footer";
 
 const Home = () => {
+
+  const goTop = () => {
+    window.scrollTo(0, 0);
+  };
+
   return (
     <div className="homePage">
       <NavBar />
@@ -27,6 +32,8 @@ const Home = () => {
       <About />
       <Contact />
       <Footer />
+      <button className="to-top" onClick={goTop}>Voltar ao topo</button>
+      
     </div>
   );
 };
