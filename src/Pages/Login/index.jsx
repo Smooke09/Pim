@@ -1,7 +1,17 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import connection from "../../API/connection";
 import "./styles.scss";
 
 const login = () => {
+  const [userName, setUserName] = useState("");
+  console.log(userName);
+
+  useEffect(() => {
+    connection.get("/client/").then((response) => {
+      console.log(response);
+    });
+  });
+
   return (
     <div className="login-page">
       <div className="login-page-content">
@@ -9,6 +19,12 @@ const login = () => {
           <div className="content-left">
             <div className="content-text">
               <h1>Login</h1>
+              <input
+                type="text"
+                placeholder="Username"
+                value={userName}
+                onChange={(e) => setUserName(e.target.value)}
+              />
               <p>
                 Entre em contato conosco <br />
                 para ter uma consultoria gratuita!
