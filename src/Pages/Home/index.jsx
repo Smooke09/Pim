@@ -8,8 +8,11 @@ import Footer from "../Footer";
 
 const Home = () => {
 
-  const goTop = () => {
-    window.scrollTo(0, 0);
+  const goTop = () =>{
+    window.scrollTo({
+      top: 0, 
+      behavior: 'smooth'
+    });
   };
 
   return (
