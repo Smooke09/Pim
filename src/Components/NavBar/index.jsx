@@ -18,13 +18,10 @@ const NavBar = () => {
                   <Link to="#">Home</Link>
                 </li>
                 <li>
-                  <Link to="#">Products</Link>
+                  <Link to="#">Planos</Link>
                 </li>
                 <li>
-                  <Link to="#">Services</Link>
-                </li>
-                <li>
-                  <Link to="#">Services</Link>
+                  <Link to="#">Suporte</Link>
                 </li>
               </ul>
             </div>
