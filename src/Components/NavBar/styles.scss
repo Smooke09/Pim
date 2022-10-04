@@ -16,6 +16,7 @@ header {
       display: flex;
       justify-content: center;
       top: 0;
+      opacity: 0.9;
       z-index: 99;
 
       .content-navbar {
@@ -23,16 +24,17 @@ header {
         justify-content: space-between;
         width: 100%;
         max-width: 1270px;
-        height: 100px;
+        height: 110px;
 
         .content-img {
           display: flex;
           align-items: center;
           justify-content: center;
+          margin-left: 30px;
 
           img {
-            width: 100px;
-            height: 100px;
+            width: 110px;
+            height: 110px;
           }
         }
 
@@ -52,12 +54,11 @@ header {
               a {
                 text-decoration: none;
                 color: var(--text-color-white);
-                font-size: 20px;
+                font-size: 18px;
                 font-weight: 600;
                 transition: 0.5s;
                 &:hover {
                   color: var(--hoverButton);
-                  border-bottom: 1px solid var(--hoverButton);
                   transition: 0.5s;
                 }
               }

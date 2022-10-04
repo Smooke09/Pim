@@ -1,77 +1,103 @@
-.login-page {
-    width: 100%;
-    position: relative;
-  
-    .login-page-content {
-      background-image: url("/img/contato.jpg");
-      background-size: cover;
-      width: 100%;
-      height: 400px;
+.container-login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url(../img/backgroundLogin.jpg);
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
+
+  .login-content {
+    background-color: #b1bbc4;
+    box-shadow: 0px 1px 5px 3px rgb(197, 197, 197);
+    display: flex;
+    width: 970px;
+    max-width: 970px;
+    height: 500px;
+    border-radius: 10px;
+
+    .form-login {
       display: flex;
-      align-items: center;
-      justify-content: center;
-  
-      .box-login {
+      .login-form {
         display: flex;
-        max-width: 1270px;
-        width: 100%;
-        justify-content: space-between;
-      }
-  
-      .content-left {
-        .content-text {
-          width: 400px;
-          height: 200px;
-          h1 {
-            font-size: 1.5rem;
-            color: var(--text-color);
-            margin-bottom: 20px;
-            font-weight: 300px;
-          }
-  
-          p {
-            font-size: 1rem;
-            color: var(--text-color-plain);
-            margin-bottom: 20px;
-            font-weight: 300px;
-          }
-        }
-      }
-  
-      .content-right {
-        display: flex;
+        flex-direction: column;
+        align-items: center;
         justify-content: center;
-  
-        .content-text-right {
-          width: 390px;
-          h1 {
-            font-size: 1.3rem;
-            color: var(--text-color);
-            margin-bottom: 20px;
-            font-weight: 300px;
+        width: 50%;
+        height: 100%;
+
+        img {
+          width: 190px;
+          height: 120px;
+          margin-bottom: 20px;
+        }
+
+        h1 {
+          font-size: 2.5rem;
+          color: var(--text-color);
+          margin-bottom: 1rem;
+        }
+
+        .recover-password {
+          color: var(--text-color);
+          font-size: 0.9rem;
+          margin-bottom: 1rem;
+          text-decoration: none;
+          text-align: end;
+          width: 100%;
+          margin-right: 90px;
+        }
+
+        input {
+          width: 80%;
+          height: 2.5rem;
+          margin-bottom: 1rem;
+          border: none;
+          border-radius: 5px;
+          outline: none;
+          padding: 0 1rem;
+        }
+
+        .button-login {
+          width: 80%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+
+          button {
+            width: 90%;
+            height: 2.5rem;
+            border: none;
+            border-radius: 5px;
+            background-color: var(--hoverButton);
+            color: var(--text-color-white);
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: 0.3s;
+
+            &:hover {
+              background-color: var(--hover-button-banner);
+            }
           }
-  
-          .button-login {
-            display: flex;
-            width: 100%;
-            button {
-              padding: 10px;
-              background-color: var(--hoverButton);
-              border: none;
-              border-radius: 5px;
-              color: var(--text-color-white);
-              font-size: 1rem;
-              font-weight: 700px;
-              cursor: pointer;
-  
-              &:hover {
-                background-color: var(--hover-button-banner);
-                transition: 0.5s;
-              }
+
+          a {
+            color: var(--text-color);
+            font-size: 1.1rem;
+            margin-top: 1rem;
+            text-decoration: none;
+
+            &:hover {
+              text-decoration: underline;
+              opacity: 0.9;
             }
           }
         }
       }
+      .container-img {
+        display: flex;
+        width: 50%;
+      }
     }
   }
-  
+}

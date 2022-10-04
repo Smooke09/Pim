@@ -1,14 +1,18 @@
 import React from "react";
-import { Routes, Route, Link } from "react-router-dom";
+import { Route, Routes, Link } from "react-router-dom";
 import Home from "../Pages/Home";
 import Login from "../Pages/Login";
+import { AuthProvider } from "../context/auth";
 
 const ChangeRoutes = () => {
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/login" element={<Login />} />
-    </Routes>
+    <AuthProvider>
+      <Routes>
+        <Route path="/home" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="*" element={<Home />} />
+      </Routes>
+    </AuthProvider>
   );
 };
 

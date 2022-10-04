@@ -27,20 +27,24 @@
           align-items: center;
         }
 
-        h3 {
-          font-size: 1.8rem;
-          color: var(--text-color);
-          width: 100%;
-          text-align: center;
-        }
+        .card-text {
+          display: flex;
+          flex-direction: column;
 
-        p {
-          font-size: 1.2rem;
-          color: var(--text-color-plain);
-          width: 100%;
-          text-align: left;
-          padding: 15px;
-          word-break: break-all;
+          h3 {
+            font-size: 1.8rem;
+            color: var(--text-color);
+            width: 100%;
+            text-align: center;
+          }
+
+          p {
+            font-size: 1.2rem;
+            color: var(--text-color-plain);
+            width: 100%;
+            padding: 15px;
+            word-break: break-all;
+          }
         }
 
         .card-item-button {

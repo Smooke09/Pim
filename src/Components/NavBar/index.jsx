@@ -1,7 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "./styles.scss";
 
-import "./styles.scss"; {/*Inserção dos estilo da página*/}
+{
+  /*Inserção dos estilo da página*/
+}
 
 const NavBar = () => {
   return (
@@ -15,16 +18,16 @@ const NavBar = () => {
             <div className="content-menu">
               <ul>
                 <li>
-                  <Link to="#">Home</Link>
+                  <Link to="/login">Login</Link>
                 </li>
                 <li>
-                  <Link to="#">Products</Link>
+                  <Link to="#">Produtos</Link>
                 </li>
                 <li>
-                  <Link to="#">Services</Link>
+                  <Link to="#">Planos</Link>
                 </li>
                 <li>
-                  <Link to="#">Services</Link>
+                  <Link to="#">Suporte</Link>
                 </li>
               </ul>
             </div>
