@@ -23,7 +23,7 @@ const Features = () => {
               </p>
               <div className="card-item-button">
                 <button>
-                  <a href="#">Fazer Simulação</a>
+                  <a href="/Simulation">Fazer Simulação</a>
                 </button>
               </div>
             </div>
