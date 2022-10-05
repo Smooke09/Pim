@@ -2,36 +2,67 @@ div {
     position: relative;
 
     .container-footer {
+        background-color: var(--background-footer);
         display: flex;
         position: relative;
-        flex-direction: row;
+        //flex-direction: row;
         align-items: center;
-        //justify-content: space-between;
+        justify-content: space-between;
         width: 100%;
         height: 100px;
         
         .div-logo {
             display: flex;
-            font-size: 30pt;
-            left: 45%;
+            top: auto;
+            bottom: auto;
+            margin-left: 1%;
+            right: auto;
             width: 160px;
-            height: 90px;
+            height: 50px;
+        }
+
+        .div-email {
+            margin-bottom: 0px;
+            display: flex;
+            flex-direction: column;
+            left: 31.5%;
+            display: flex;
+
+            img {                    
+                width: 112px;
+                height: 60px;
+                margin: 0%;
+            }
+            .email {      
+                font-size: 8pt;
+                color: var(--text-color-white);
+                margin-bottom: 0%;
+            }
         }
 
         .div-ul {
             display: flex;
-            left: 71%;
-            padding: 2px;
-            a {
-                text-decoration: none;
-                color: var(--text-color-white);
-                font-size: 15px;
-                font-weight: 600;
-                transition: 0.5s;
-                &:hover {
-                  color: var(--hoverButton);
-                  border-bottom: 1px solid var(--hoverButton);
-                  transition: 0.5s;
+            right: 12%;
+            padding-top: 5px;
+            margin-bottom: auto;
+
+            .ul {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                a {
+                    text-decoration: none;
+                    color: var(--text-color-white);
+                    font-size: 15px;
+                    font-weight: 600;
+                    transition: 0.5s;
+                    padding-right: 5px;
+                    &:hover {
+                    color: var(--hoverButton);
+                    border-bottom: 1px solid var(--hoverButton);
+                    transition: 0.5s;
+                    }
                 }
             }
         }
