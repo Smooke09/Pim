@@ -7,6 +7,21 @@ import "./styles.scss";
 }
 
 const NavBar = () => {
+
+  const goPlan = () =>{
+    window.scrollTo({
+      top: 500, 
+      behavior: 'smooth'
+    });
+  };
+
+  const goContats = () =>{
+    window.scrollTo({
+      top: 2000, 
+      behavior: 'smooth'
+    });
+  };
+
   return (
     <header>
       <div className="container-navbar">
@@ -20,14 +35,16 @@ const NavBar = () => {
                 <li>
                   <Link to="/login">Login</Link>
                 </li>
+                {/*
                 <li>
                   <Link to="#">Produtos</Link>
                 </li>
+                */}
                 <li>
-                  <Link to="#">Planos</Link>
+                  <button className="button" onClick={goPlan}>Planos</button>
                 </li>
                 <li>
-                  <Link to="#">Suporte</Link>
+                  <button className="button" onClick={goContats}>Suporte</button>
                 </li>
               </ul>
             </div>
