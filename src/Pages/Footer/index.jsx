@@ -4,6 +4,21 @@ import { Link } from "react-router-dom";
 import "./styles.scss"; {/*Inserção dos estilo da página*/}
 
 const Footer = () => {
+
+    const goPlan = () =>{
+        window.scrollTo({
+          top: 500, 
+          behavior: 'smooth'
+        });
+      };
+    
+      const goContats = () =>{
+        window.scrollTo({
+          top: 2000, 
+          behavior: 'smooth'
+        });
+      };
+
   return (
     <div className="div-master">
         <div className="container-footer">
@@ -12,19 +27,19 @@ const Footer = () => {
             </div>
             <div className="div-email">
                 <img className="topSeguro-" src="./img/logo-top-brasil-seguros-png.png" alt="topSeguro" />
-                <p className="email">safetylife.rh@gmail.com</p>
+                <a href="mailto: safetylife.rh@gmail.com" className="email">safetylife.rh@gmail.com</a>
             </div>
             <div className="div-ul">
                 <ul className="ul">
-                    <li>
-                    <Link to="#">Home</Link>    {/*Inserção das opções para redirecionamento*/}
-                    </li>
-                    <li>
-                    <Link to="#">Planos</Link>    {/*Inserção das opções para redirecionamento*/}
-                    </li>
-                    <li>
-                    <Link to="#">Suporte</Link>    {/*Inserção das opções para redirecionamento*/}
-                    </li>
+                    <ol>
+                        <Link to="/login">Login</Link>    {/*Inserção das opções para redirecionamento*/}
+                    </ol>
+                    <ol>
+                        <button className="button" onClick={goPlan}>Planos</button>    {/*Inserção das opções para redirecionamento*/}
+                    </ol>
+                    <ol>
+                        <button className="button" onClick={goContats}>Suporte</button>    {/*Inserção das opções para redirecionamento*/}
+                    </ol>
                 </ul>
             </div>
         </div>

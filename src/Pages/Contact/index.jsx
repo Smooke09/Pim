@@ -19,10 +19,14 @@ const Contact = () => {
             <div className="content-text-right">
               <h1>
                 Se preferir, entre em <br />
-                contato conosco pelo WhatsApp
+                contato conosco pelo E-mail
               </h1>
               <div className="button-contact">
-                <button>Solicitar contato</button>
+                <button>
+                  <a href="mailto: safetylife.rh@gmail.com">
+                  Solicitar contato
+                  </a>
+                </button>
               </div>
             </div>
           </div>

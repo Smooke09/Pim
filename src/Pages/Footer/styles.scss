@@ -51,7 +51,10 @@ div {
                 align-items: center;
                 justify-content: center;
 
-                a {
+                .button, a {
+                    background-color: var(--background-footer);
+                    border: none;
+                    cursor: pointer;
                     text-decoration: none;
                     color: var(--text-color-white);
                     font-size: 15px;
