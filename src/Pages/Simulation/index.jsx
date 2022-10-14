@@ -4,118 +4,102 @@ import "./styles.scss";
 const simulation = () => {
   return (
     <div className="container-simulation-page">
-      <div className="div-button-goBack"></div>
-      <button>
-        <a href="/Home">VOLTAR</a>
-      </button>
+        <button className="button-goback">
+          <a href="/Home">VOLTAR</a>
+        </button>
       <div className="simulation-content">
         <form className="form-simulation">
           <div className="simulation-form fadeInLeft ">
             <img src="img/logo2.png" alt="logo" />
             <div className="imputs-div">
               <div className="div-imput">
-                <p>Nome:</p>  <input
+                <p>Nome:</p>  <input className="input-normal"
                   onChange={(e) => setEmail(e.target.value)}
                 />
-                <p>Email:</p>  <input
+                <p>RG:</p>  <input  className="input-normal"
                   onChange={(e) => setPassword(e.target.value)}
                 />
-                <p>Telefone:</p>  <input
+                <p>CPF:</p>  <input className="input-normal"
                   onChange={(e) => setEmail(e.target.value)}
-                />              
-                <p>Trabalho:</p>  <input
-                  onChange={(e) => setPassword(e.target.value)}
-                /><p>Nome:</p>  <input
+                />
+                <div className="div-checkbox">
+                  <p>Genero:</p>  <input className="input-checkbox" type = "checkbox"
+                  /> <label>Masculino</label>
+                  <input className="input-checkbox" type = "checkbox"
+                  /> <label>Feminino</label>
+                  <input className="input-checkbox" type = "checkbox"
+                  /> <label>Outro</label>
+                </div>
+                <p>Numero de contato:</p>  <input className="input-normal"
                 onChange={(e) => setEmail(e.target.value)}
                 />
-                <p>Email:</p>  <input
+                <p>Estado civil:</p>  <input className="input-normal"
                   onChange={(e) => setPassword(e.target.value)}
                 />
-                <p>Telefone:</p>  <input
+                <p>Nacionalidade:</p>  <input className="input-normal"
                   onChange={(e) => setEmail(e.target.value)}
-                />              
-                <p>Trabalho:</p>  <input
-                  onChange={(e) => setPassword(e.target.value)}
-                />
+                />     
+                <div className="div-checkbox">         
+                  <p>Reside no Brasil?:</p>  <input className="input-checkbox" type = "checkbox"
+                      /> <label>Sim</label>
+                      <input className="input-checkbox" type = "checkbox"
+                      /> <label>Não</label>
+                </div>
               </div>  
-              <div className="div-imput">       
-                <p>Atividades no trabalho:</p>  <input
+              <div className="div-imput">
+                <p>Data de nascimento:</p>  <input className="input-normal"
                   onChange={(e) => setEmail(e.target.value)}
                 />
-                <p>Faixa salarial:</p>  <input
+                <p>Hobbies:</p>  <input className="input-normal"
                   onChange={(e) => setPassword(e.target.value)}
                 />
-                <p>Mora sozinho?</p>  <input
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-                <p>Idade:</p>  <input
+                <div className="div-checkbox">
+                  <p>Fuma?:</p>  <input className="input-checkbox" type = "checkbox"
+                  /> <label>Sim</label>
+                  <input className="input-checkbox" type = "checkbox"
+                  /> <label>Não</label>
+                </div>
+                <p>Registro de condução:</p>  <input className="input-normal"
                   onChange={(e) => setPassword(e.target.value)}
-                /><p>Atividades no trabalho:</p>  <input
+                />
+                <p>Faixa de renda mensal:</p>  <input className="input-normal"
                 onChange={(e) => setEmail(e.target.value)}
                 />
-                <p>Faixa salarial:</p>  <input
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-                <p>Mora sozinho?</p>  <input
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-                <p>Idade:</p>  <input
+                <div className="div-checkbox">
+                  <p>Politicamente exposto?:</p>  <input className="input-checkbox" type = "checkbox"
+                  /> <label>Sim</label>
+                  <input className="input-checkbox" type = "checkbox"
+                  /> <label>Não</label>
+                </div>
+                <div className="div-checkbox">
+                  <p>Vinculo com alguém politicamente exposto ??</p>  <input className="input-checkbox" type = "checkbox"
+                    /> <label>Sim</label>
+                    <input className="input-checkbox" type = "checkbox"
+                    /> <label>Não</label>
+                </div>
+                <p>CEP:</p>  <input className="input-normal"
                   onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
               <div className="div-imput">       
-                <p>Atividades no trabalho:</p>  <input
+                <p>Tipo de imovel:</p>  <input className="input-normal"
                   onChange={(e) => setEmail(e.target.value)}
                 />
-                <p>Faixa salarial:</p>  <input
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-                <p>Mora sozinho?</p>  <input
+                <div className="div-checkbox">
+                  <p>Residencia propria?:</p>  <input className="input-checkbox" type = "checkbox"
+                    /> <label>Sim</label>
+                    <input className="input-checkbox" type = "checkbox"
+                    /> <label>Não</label>
+                </div>
+                <p>Complemento, numero da residencia e detalhes sobre a moradia caso necessário</p>  <input className="input-normal"
                   onChange={(e) => setEmail(e.target.value)}
                 />
-                <p>Idade:</p>  <input
-                  onChange={(e) => setPassword(e.target.value)}
-                /><p>Atividades no trabalho:</p>  <input
-                onChange={(e) => setEmail(e.target.value)}
-                />
-                <p>Faixa salarial:</p>  <input
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-                <p>Mora sozinho?</p>  <input
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-                <p>Idade:</p>  <input
-                  onChange={(e) => setPassword(e.target.value)}
-                />
+                
               </div>
-              <div className="div-imput">       
-                <p>Atividades no trabalho:</p>  <input
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-                <p>Faixa salarial:</p>  <input
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-                <p>Mora sozinho?</p>  <input
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-                <p>Idade:</p>  <input
-                  onChange={(e) => setPassword(e.target.value)}
-                /><p>Atividades no trabalho:</p>  <input
-                onChange={(e) => setEmail(e.target.value)}
-                />
-                <p>Faixa salarial:</p>  <input
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-                <p>Mora sozinho?</p>  <input
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-                <p>Idade:</p>  <input
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-              </div>
+              
             </div>
             <div className="button-simulation">
-              <button>simulation</button>
+              <button>Simular</button>
             </div>
           </div>
         </form>
