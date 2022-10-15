@@ -11,6 +11,37 @@
   height: 100vh;
   width: 100%;
 
+  .button-goback {
+    //position: absolute;
+    position: fixed;
+    //display: block;
+    right: 93%;
+    bottom: 92%;
+    background-color: var(--hoverButton);
+    width: 80px;
+    height: 40px;
+    border-radius: 7px;
+    border: none;
+    color: var(--text-color-white);
+    &:hover {
+      background-color: var(--hover-button-banner);
+      transition: 0.2ms;
+      -moz-transition: all 0.3s;
+      -webkit-transition: all 0.3s;
+      transition: all 0.3s;
+      -moz-transform: scale(1.1);
+      -webkit-transform: scale(1.1);
+      transform: scale(1.1);
+    }
+
+    a {
+      color: var(--text-color-white);
+      text-decoration: none;
+      font-weight: 400;
+      font-family: Poppins;
+    }
+  }
+
   .login-content {
     background-color: #b1bbc4;
     box-shadow: 0px 1px 5px 3px rgb(197, 197, 197);
