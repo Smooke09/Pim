@@ -6,7 +6,7 @@
     rgba(194, 194, 194, 0.548),
     rgba(167, 167, 167, 0.7)
   ),
-  url(../img/backgroundsimulation.jpg);
+  url(../img/backgroundLogin.jpg);
   background-size: cover;
   height: 100%;
   width: 100%;
@@ -80,8 +80,10 @@
 
           .div-imput{
             //background-color: #b7dcfc;
-            margin-left: 2%;
-            //margin-right: 2%;
+            padding-left: 1%;
+            margin-right: 2%;
+            border-left: rgb(68, 64, 64) 2px solid;
+            //border-right: rgb(68, 64, 64) 2px solid;
             p {
               margin-left: 1%;
             }
@@ -117,6 +119,11 @@
 
             }
           }
+
+          #input1 {
+            border-left: none;
+          }
+          
         }
 
         .button-simulation {
