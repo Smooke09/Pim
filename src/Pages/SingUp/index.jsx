@@ -12,6 +12,9 @@ const SingUp = () => {
 
   return (
     <div className="container-singUp-page">
+      <button className="button-goback">
+        <a href="/login">VOLTAR</a>
+      </button>
       <div className="singUp-content">
         <form className="form-singUp" onSubmit={handleSubmit}>
           <div className="singUp-form fadeInLeft ">
@@ -33,7 +36,7 @@ const SingUp = () => {
               </div>
               <div className="input-right-singUp">
                 <div className="div-input">
-                  <span>Gênero</span>
+                  <span>Email</span>
                   <input type="text" placeholder="Digite seu email" />
                 </div>
                 <div className="div-input">
