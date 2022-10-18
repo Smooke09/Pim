@@ -101,6 +101,8 @@
     height: 40px;
     border-radius: 7px;
     color: var(--text-color-white);
+    border: none;
+    cursor: pointer;
     &:hover {
       background-color: var(--hover-button-banner);
       transition: 0.2ms;

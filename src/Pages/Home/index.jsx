@@ -22,8 +22,8 @@ const Home = () => {
         <div className="content-homePage">
           <div className="content-itens-homePage">
             <h2>
-              Assistencia para sua vida e <br />a sua familia de qualquer <br />
-              lugar e qualquer hora
+              Assistência para sua vida e <br />a sua familia de qualquer <br />
+              lugar a toda hora
             </h2>
             <button>
               <a href="/login">Fazer login</a>

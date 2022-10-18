@@ -8,7 +8,7 @@ const Contact = () => {
         <div className="box-contact">
           <div className="content-left">
             <div className="content-text">
-              <h1>Ainda nao sabe qual seguro contratar?</h1>
+              <h1>Ainda não sabe qual seguro contratar?</h1>
               <p>
                 Entre em contato conosco <br />
                 para ter uma consultoria gratuita!
