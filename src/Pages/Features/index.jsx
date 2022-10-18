@@ -38,8 +38,8 @@ const Features = () => {
               <div className="card-text">
                 <h3>Invalidez</h3>
                 <p>
-                  Para um acidente ou doença que causam perda permanente ou
-                  total dos movimentos de membros e funcionamento de órgãos.
+                  Para acidentes ou doenças que causam perda permanente ou
+                  total dos movimentos dos membros e funcionamento de órgãos.
                 </p>
               </div>
               <div className="card-item-button">
@@ -57,7 +57,7 @@ const Features = () => {
               <div className="card-text">
                 <h3>Doencas Graves</h3>
                 <p>
-                  Se você vier a faltar por causa de um acidente ou doença, a
+                  Caso seja diagnosticado com uma doença grave, você ou a
                   pessoa que você escolheu como beneficiário receberá o valor
                   contratado.
                 </p>
