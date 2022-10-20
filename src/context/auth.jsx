@@ -7,6 +7,7 @@ export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const navigate = useNavigate();
+  const [authenticated, setAuthenticated] = useState(false);
 
   const login = (email, password) => {
     const user = {
@@ -16,7 +17,9 @@ export const AuthProvider = ({ children }) => {
     connection
       .post("/public/login", user)
       .then((response) => {
+        console.log(response.data);
         const data = {
+          id: response.data.user.id,
           user: response.data.user.email,
           token: response.data.token,
         };
@@ -41,6 +44,7 @@ export const AuthProvider = ({ children }) => {
           icon: "success",
           title: "Logado com sucesso",
         });
+        setAuthenticated(true);
       })
       .catch((error) => {
         Swal.fire({
@@ -51,5 +55,14 @@ export const AuthProvider = ({ children }) => {
       });
   };
 
-  return <AuthContext.Provider value={{ login }} children={children} />;
+  return (
+    <AuthContext.Provider
+      value={{
+        authenticated,
+        setAuthenticated,
+        login,
+      }}
+      children={children}
+    />
+  );
 };
