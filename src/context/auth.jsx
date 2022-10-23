@@ -2,6 +2,7 @@ import React, { useState, useEffect, createContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import connection from "../API/connection";
 import Swal from "sweetalert2";
+import { Error, Success } from "../Components/Error";
 
 export const AuthContext = createContext();
 
@@ -17,7 +18,6 @@ export const AuthProvider = ({ children }) => {
     connection
       .post("/public/login", user)
       .then((response) => {
-        console.log(response.data);
         const data = {
           id: response.data.user.id,
           user: response.data.user.email,
@@ -25,32 +25,12 @@ export const AuthProvider = ({ children }) => {
         };
         localStorage.setItem("user", JSON.stringify(data));
         navigate("/home");
-        const Toast = Swal.mixin({
-          toast: true,
-          position: "top-end",
-          showConfirmButton: false,
-          timer: 3000,
-          timerProgressBar: true,
-          imageWidth: 100,
-          imageHeight: 100,
-
-          didOpen: (toast) => {
-            toast.addEventListener("mouseenter", Swal.stopTimer);
-            toast.addEventListener("mouseleave", Swal.resumeTimer);
-          },
-        });
-
-        Toast.fire({
-          icon: "success",
-          title: "Logado com sucesso",
-        });
+        Success({ message: "Login realizado com sucesso!" });
         setAuthenticated(true);
       })
       .catch((error) => {
-        Swal.fire({
-          icon: "error",
-          title: "Oops...",
-          text: error.response.data,
+        Error({
+          message: error.response.data,
         });
       });
   };

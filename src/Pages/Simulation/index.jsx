@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import Api from "../../API/connection";
 import Input from "../../Components/Input";
+import { Error, Success } from "../../Components/Error";
 import "./styles.scss";
 
 const simulation = () => {
   const { id } = JSON.parse(localStorage.getItem("user"));
-
   const [client, setClient] = useState({
     name: "",
     rg: "",
@@ -25,10 +25,10 @@ const simulation = () => {
     profissao: "",
     risco_profissao: "",
   });
+  const [pessoaKey, setPessoaKey] = useState(null);
 
   useEffect(() => {
     Api.get(`/users/${id}`).then((response) => {
-      console.log(response.data);
       const data = response.data.tb_pessoa;
       const client = data.tb_cliente[0];
 
@@ -36,6 +36,8 @@ const simulation = () => {
         const telBR = tel.replace(/(\d{2})(\d{5})(\d{4})/, "($1) $2-$3");
         return telBR;
       };
+
+      setPessoaKey(response.data.pessoa_key);
 
       setClient({
         name: data.nm_pessoa,
@@ -61,24 +63,40 @@ const simulation = () => {
   }, []);
 
   const handleSubmit = (e) => {
+    e.preventDefault();
+
+    // const data = {
+    //   hobbies: "jogar",
+    //   fuma: true,
+    //   registro_conducao: "A",
+    //   faixa_renda: 1000,
+    //   politicamente_exposto: false,
+    //   vinculo_politico: false,
+    //   profissao: "programador",
+    //   risco_profissao: "PEQUENO",
+    // };
+
     const data = {
       hobbies: client.hobbies,
       fuma: client.fuma,
       registro_conducao: client.registro_conducao,
       faixa_renda: client.faixa_renda,
+      politicamente_exposto: client.politicamente_exposto,
+      vinculo_politico: client.vinculo_politico,
+      profissao: client.profissao,
+      risco_profissao: client.risco_profissao,
     };
 
-    e.preventDefault();
-    Api.post(`/client/form/create/${id}`, client)
+    Api.post(`/client/form/create/${pessoaKey}`, data)
       .then((response) => {
-        console.log(response);
+        Success({ message: "Dados enviados com sucesso!" });
       })
       .catch((error) => {
-        console.log(error);
+        Error({
+          message: error.response.data,
+        });
       });
   };
-
-  console.log("state", client);
 
   return (
     <div className="container-simulation-page">

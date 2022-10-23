@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/auth";
-import Swal from "sweetalert2";
+import { Error, ErrorCard } from "../../Components/Error";
 
 import "./styles.scss";
 
@@ -16,22 +16,9 @@ const login = () => {
     if (token) {
       navigate("/home");
 
-      const Toast = Swal.mixin({
-        toast: true,
-        position: "top-end",
-        showConfirmButton: false,
-        timer: 3000,
-        timerProgressBar: true,
-        imageWidth: 100,
-        imageHeight: 100,
-        didOpen: (toast) => {
-          toast.addEventListener("mouseenter", Swal.stopTimer);
-          toast.addEventListener("mouseleave", Swal.resumeTimer);
-        },
-      });
-      Toast.fire({
-        icon: "error",
-        title: "Você já está logado",
+      ErrorCard({
+        message: "Voce ja esta logado!",
+        type: "info",
       });
     }
   }, []);
@@ -39,11 +26,7 @@ const login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (email === "" || password === "") {
-      Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: "Preencha todos os campos",
-      });
+      Error({ message: "Preencha todos os campos" });
       return;
     }
     login(email, password);
