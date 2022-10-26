@@ -1,0 +1,243 @@
+.container-profile-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(
+      rgba(194, 194, 194, 0.548),
+      rgba(167, 167, 167, 0.7)
+    ),
+    url(../img/backgroundLogin.jpg);
+  background-size: cover;
+  height: 100vh;
+  width: 100%;
+
+  .button-goback {
+    //position: absolute;
+    position: fixed;
+    //display: block;
+    right: 93%;
+    bottom: 92%;
+    background-color: var(--hoverButton);
+    width: 80px;
+    height: 40px;
+    border-radius: 7px;
+    border: none;
+    color: var(--text-color-white);
+    &:hover {
+      background-color: var(--hover-button-banner);
+      transition: 0.2ms;
+      -moz-transition: all 0.3s;
+      -webkit-transition: all 0.3s;
+      transition: all 0.3s;
+      -moz-transform: scale(1.1);
+      -webkit-transform: scale(1.1);
+      transform: scale(1.1);
+    }
+
+    a {
+      color: var(--text-color-white);
+      text-decoration: none;
+      font-weight: 400;
+      font-family: Poppins;
+    }
+  }
+
+  .profile-content {
+    background-color: #b1bbc4;
+    box-shadow: 0px 1px 5px 3px rgb(197, 197, 197);
+    display: flex;
+    width: 970px;
+    max-width: 970px;
+    height: 7 0%;
+    border-radius: 10px;
+    margin-top: 2%;
+    margin-bottom: 2%;
+
+    .form-profile {
+      display: flex;
+      width: 100%;
+      justify-content: center;
+
+      .profile-form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+
+        img {
+          width: 130px;
+          height: 70px;
+          margin-top: 2%;
+          margin-left: auto;
+          margin-right: auto;
+          margin-bottom: 2%;
+        }
+
+        .imputs-div {
+          display: flex;
+          padding-bottom: 1%;
+          width: 70%;
+
+          .div-imput {
+            padding-left: 1%;
+            margin-right: 2%;
+            margin-top: 7%;
+            border: none;
+
+            .div-h1 {
+              display: flex;
+              justify-content: center;
+              color: rgb(20, 20, 20);
+            }
+
+            .input-normal {
+              margin-right: 2%;
+              margin-left: 1%;
+              width: 295px;
+              height: 2.5rem;
+              margin-bottom: 1rem;
+              border: none;
+              border-radius: 5px;
+              outline: none;
+              padding: 0 1rem;
+            }
+
+            .div-infos {
+              background-color: rgb(240, 240, 240);
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              flex-direction: row;
+              padding-top: 3%;
+              padding-bottom: 3%;
+              border-radius: 5px;
+              margin-bottom: 1rem;
+              width: 295px;
+            }
+
+            p {
+              margin-left: 1%;
+            }
+          }
+          #input1 {
+            margin-right: 10%;
+          }
+        }
+        .button-profile {
+          width: 80%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+
+          button {
+            width: 50%;
+            height: 2.5rem;
+            border: none;
+            border-radius: 5px;
+            background-color: var(--hoverButton);
+            color: var(--text-color-white);
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-bottom: 3%;
+
+            &:hover {
+              background-color: var(--hover-button-banner);
+              -moz-transition: all 0.3s;
+              -webkit-transition: all 0.3s;
+              transition: all 0.3s;
+              -moz-transform: scale(1.1);
+              -webkit-transform: scale(1.1);
+              transform: scale(1.1);
+            }
+          }
+
+          a {
+            color: var(--text-color);
+            font-size: 1.1rem;
+            margin-top: 1rem;
+            text-decoration: none;
+
+            &:hover {
+              text-decoration: underline;
+              opacity: 0.9;
+            }
+          }
+        }
+      }
+    }
+
+    // ###################### Efeito fade right ######################
+
+    .fadeInRight {
+      -webkit-animation-name: fadeInRight;
+      animation-name: fadeInRight;
+      -webkit-animation-duration: 1s;
+      animation-duration: 1s;
+      -webkit-animation-fill-mode: both;
+      animation-fill-mode: both;
+    }
+    @-webkit-keyframes fadeInRight {
+      0% {
+        opacity: 0;
+        -webkit-transform: translate3d(100%, 0, 0);
+        transform: translate3d(100%, 0, 0);
+      }
+      100% {
+        opacity: 1;
+        -webkit-transform: none;
+        transform: none;
+      }
+    }
+    @keyframes fadeInRight {
+      0% {
+        opacity: 0;
+        -webkit-transform: translate3d(100%, 0, 0);
+        transform: translate3d(100%, 0, 0);
+      }
+      100% {
+        opacity: 1;
+        -webkit-transform: none;
+        transform: none;
+      }
+    }
+  }
+
+  // ###################### Efeito fade left ######################
+
+  .fadeInLeft {
+    -webkit-animation-name: fadeInLeft;
+    animation-name: fadeInLeft;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+  }
+  @-webkit-keyframes fadeInLeft {
+    0% {
+      opacity: 0;
+      -webkit-transform: translate3d(-100%, 0, 0);
+      transform: translate3d(-100%, 0, 0);
+    }
+    100% {
+      opacity: 1;
+      -webkit-transform: none;
+      transform: none;
+    }
+  }
+  @keyframes fadeInLeft {
+    0% {
+      opacity: 0;
+      -webkit-transform: translate3d(-100%, 0, 0);
+      transform: translate3d(-100%, 0, 0);
+    }
+    100% {
+      opacity: 1;
+      -webkit-transform: none;
+      transform: none;
+    }
+  }
+}

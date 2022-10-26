@@ -10,7 +10,6 @@ import "./styles.scss";
 
 const NavBar = () => {
   const { authenticated, setAuthenticated } = useContext(AuthContext);
-  console.log(authenticated);
 
   useEffect(() => {
     if (localStorage.getItem("user")) {
@@ -44,16 +43,11 @@ const NavBar = () => {
               <ul>
                 <li>
                   {authenticated ? (
-                    <Link to="/perfil">Meu perfil</Link>
+                    <Link to="/profile">Meu perfil</Link>
                   ) : (
                     <Link to="/login">Login</Link>
                   )}
                 </li>
-                {/*
-                <li>
-                  <Link to="#">Produtos</Link>
-                </li>
-                */}
                 <li>
                   <button className="button" onClick={goPlan}>
                     Planos
