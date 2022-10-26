@@ -1,7 +1,6 @@
 import React, { useState, useEffect, createContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import connection from "../API/connection";
-import Swal from "sweetalert2";
 import { Error, Success } from "../Components/Error";
 
 export const AuthContext = createContext();
