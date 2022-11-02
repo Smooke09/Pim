@@ -25,7 +25,7 @@ const Features = () => {
               </div>
               <div className="card-item-button">
                 <button>
-                  <a href="/Simulation">Fazer Simulação</a>
+                  <a href="/simulation">Fazer Simulação</a>
                 </button>
               </div>
             </div>
@@ -38,13 +38,13 @@ const Features = () => {
               <div className="card-text">
                 <h3>Invalidez</h3>
                 <p>
-                  Para acidentes ou doenças que causam perda permanente ou
-                  total dos movimentos dos membros e funcionamento de órgãos.
+                  Para acidentes ou doenças que causam perda permanente ou total
+                  dos movimentos dos membros e funcionamento de órgãos.
                 </p>
               </div>
               <div className="card-item-button">
                 <button>
-                  <a href="/Simulation">Fazer Simulação</a>
+                  <a href="/simulation">Fazer Simulação</a>
                 </button>
               </div>
             </div>
@@ -57,14 +57,14 @@ const Features = () => {
               <div className="card-text">
                 <h3>Doencas Graves</h3>
                 <p>
-                  Caso seja diagnosticado com uma doença grave, você ou a
-                  pessoa que você escolheu como beneficiário receberá o valor
+                  Caso seja diagnosticado com uma doença grave, você ou a pessoa
+                  que você escolheu como beneficiário receberá o valor
                   contratado.
                 </p>
               </div>
               <div className="card-item-button">
                 <button>
-                  <a href="/Simulation">Fazer Simulação</a>
+                  <a href="/simulation">Fazer Simulação</a>
                 </button>
               </div>
             </div>

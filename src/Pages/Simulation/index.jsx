@@ -2,10 +2,16 @@ import React, { useState, useEffect } from "react";
 import Api from "../../API/connection";
 import Input from "../../Components/Input";
 import { Error, Success } from "../../Components/Error";
+import { useNavigate } from "react-router-dom";
 import "./styles.scss";
 
-const simulation = () => {
+const Simulation = () => {
+  const navigate = useNavigate();
+
   const { id } = JSON.parse(localStorage.getItem("user"));
+
+  console.log(id);
+
   const [client, setClient] = useState({
     name: "",
     rg: "",
@@ -29,6 +35,7 @@ const simulation = () => {
 
   useEffect(() => {
     Api.get(`/users/${id}`).then((response) => {
+      console.log("RESPONSE DA API", response.data);
       const data = response.data.tb_pessoa;
       const client = data.tb_cliente[0];
 
@@ -45,11 +52,11 @@ const simulation = () => {
         rg: data.num_rg,
         cpf: data.num_cpf_cnpj,
         genero: data.genero,
-        num_contato: convertTelBR(data.num_contato),
+        num_contato: convertTelBR(data?.num_contato),
         estado_civil: data.estado_civil,
         nacionalidade: data.nacionalidade,
         reside_brasil: data.reside_brasil,
-        birth: data.dt_nascimento.split("T")[0],
+        birth: data.dt_nascimento?.split("T")[0],
         hobbies: client?.hobbies,
         fuma: client?.fuma,
         registro_conducao: client?.registro_conducao,
@@ -62,19 +69,10 @@ const simulation = () => {
     });
   }, []);
 
+  console.log("clientes", client.fuma);
+
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    // const data = {
-    //   hobbies: "jogar",
-    //   fuma: true,
-    //   registro_conducao: "A",
-    //   faixa_renda: 1000,
-    //   politicamente_exposto: false,
-    //   vinculo_politico: false,
-    //   profissao: "programador",
-    //   risco_profissao: "PEQUENO",
-    // };
 
     const data = {
       hobbies: client.hobbies,
@@ -150,7 +148,7 @@ const simulation = () => {
                       <Input
                         type="radio"
                         name="genero"
-                        value={client?.genero}
+                        value="MASCULINO"
                         checked={client?.genero === "MASCULINO"}
                         onChange={(e) =>
                           setClient({ ...client, genero: e.target.value })
@@ -161,7 +159,7 @@ const simulation = () => {
                       <Input
                         type="radio"
                         name="genero"
-                        value={client?.genero}
+                        value="FEMININO"
                         checked={client?.genero === "FEMININO"}
                         onChange={(e) =>
                           setClient({ ...client, genero: e.target.value })
@@ -173,7 +171,7 @@ const simulation = () => {
                       <Input
                         type="radio"
                         name="genero"
-                        value={client?.genero}
+                        value="OUTROS"
                         checked={client?.genero === "OUTROS"}
                         onChange={(e) =>
                           setClient({ ...client, genero: e.target.value })
@@ -275,10 +273,37 @@ const simulation = () => {
                 />
                 <div className="div-checkbox">
                   <p>Fuma?:</p>
-                  <input className="input-checkbox" type="checkbox" />
-                  <label>Sim</label>
-                  <input className="input-checkbox" type="checkbox" />
-                  <label>Não</label>
+                  <fieldset
+                    style={{
+                      border: "none",
+                      display: "flex",
+                    }}
+                  >
+                    <>
+                      <Input
+                        label="Sim"
+                        type="radio"
+                        name="fuma"
+                        value={client?.fuma}
+                        checked={!client?.fuma}
+                        onChange={(e) =>
+                          setClient({ ...client, fuma: e.target.value })
+                        }
+                        readOnly
+                      />
+                      <Input
+                        label="Não"
+                        type="radio"
+                        name="fuma"
+                        value={client?.fuma}
+                        checked={!client?.fuma}
+                        onChange={(e) =>
+                          setClient({ ...client, fuma: e.target.value })
+                        }
+                        readOnly
+                      />
+                    </>
+                  </fieldset>
                 </div>
                 <p>Registro de condução:</p>
                 <Input
@@ -309,7 +334,10 @@ const simulation = () => {
                         value={client?.politicamenteExposto}
                         checked={client?.politico}
                         onChange={(e) =>
-                          setClient({ ...client, politico: e.target.value })
+                          setClient({
+                            ...client,
+                            politicamenteExposto: e.target.value,
+                          })
                         }
                         readOnly
                       />
@@ -320,7 +348,10 @@ const simulation = () => {
                         value={client?.politicamenteExposto}
                         checked={!client?.politico}
                         onChange={(e) =>
-                          setClient({ ...client, politico: e.target.value })
+                          setClient({
+                            ...client,
+                            politicamenteExposto: e.target.value,
+                          })
                         }
                         readOnly
                       />
@@ -366,16 +397,25 @@ const simulation = () => {
 
                 <div className="div-checkbox">
                   <p>Risco do trabalho:</p>
-                  <input className="input-checkbox" type="checkbox" />
-                  <label>Extremo</label>
-                  <input className="input-checkbox" type="checkbox" />
-                  <label>Alto</label>
-                  <input className="input-checkbox" type="checkbox" />
-                  <label>Médio</label> <br />
-                  <input className="input-checkbox" type="checkbox" />
-                  <label>Baixo</label>
-                  <input className="input-checkbox" type="checkbox" />
-                  <label>Nulo</label>
+                  <fieldset style={{ border: "none", display: "flex" }}>
+                    <>
+                      <select
+                        value={client?.risco_profissao}
+                        onChange={(e) =>
+                          setClient({
+                            ...client,
+                            risco_profissao: e.target.value,
+                          })
+                        }
+                      >
+                        <option value="NULO">Nulo</option>
+                        <option value="BAIXO">Baixo</option>
+                        <option value="MEDIO">Médio</option>
+                        <option value="ALTO">Alto</option>
+                        <option value="EXTREMO">Extremo</option>
+                      </select>
+                    </>
+                  </fieldset>
                 </div>
                 <p>Email:</p>
                 <Input
@@ -395,4 +435,4 @@ const simulation = () => {
   );
 };
 
-export default simulation;
+export default Simulation;

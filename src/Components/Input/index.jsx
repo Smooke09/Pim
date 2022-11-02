@@ -11,6 +11,7 @@ const Input = ({
   onChange,
   placeholder,
   readOnly,
+  style,
 }) => {
   return (
     <div className="input-container">
@@ -23,6 +24,7 @@ const Input = ({
         onChange={onChange}
         placeholder={placeholder}
         readOnly={value && readOnly}
+        style={style}
       />
       <label>{label}</label>
     </div>

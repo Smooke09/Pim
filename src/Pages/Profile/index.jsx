@@ -3,6 +3,7 @@ import connection from "../../API/connection";
 import Input from "../../Components/Input";
 import "./styles.scss";
 import Spiner from "../../Components/Spineer";
+import { Success, Error } from "../../Components/Error";
 
 const profile = () => {
   const [user, setUser] = useState({});
@@ -18,9 +19,11 @@ const profile = () => {
   const [edit, setEdit] = useState(false);
   const [loading, setLoading] = useState(false);
 
+  const { id } = JSON.parse(localStorage.getItem("user"));
+
   useEffect(() => {
     setLoading(true);
-    connection.get("/users/18").then((response) => {
+    connection.get(`/users/${id}`).then((response) => {
       setClient({
         nome: response.data.tb_pessoa.nm_pessoa,
         email: response.data.email,
@@ -29,6 +32,7 @@ const profile = () => {
         rg: response.data.tb_pessoa.num_rg,
         estadoCivil: response.data.tb_pessoa.estado_civil,
         Nacionalidade: response.data.tb_pessoa.nacionalidade,
+        pessoa: response.data.pessoa_key,
       });
       setLoading(false);
     });
@@ -39,8 +43,28 @@ const profile = () => {
     setEdit(!edit);
   };
 
-  // console.log(user.tb_pessoa);
-  console.log(client);
+  const handleSave = (e) => {
+    e.preventDefault();
+
+    const data = {
+      nm_pessoa: client.nome,
+      num_cpf_cnpj: client.cpf,
+      num_contato: client.telefone,
+      num_rg: client.rg,
+      estado_civil: client.estadoCivil,
+      nacionalidade: client.Nacionalidade,
+    };
+
+    connection
+      .put(`/client/update/${client?.pessoa}`, data)
+      .then((resp) => {
+        Success({ message: "Dados atualizados com sucesso!" });
+        setEdit(!edit);
+      })
+      .catch((err) => {
+        Error({ message: "Erro ao atualizar dados!", type: "error" });
+      });
+  };
 
   return (
     <div className="container-profile-page">
@@ -78,7 +102,7 @@ const profile = () => {
                     onChange={(e) =>
                       setClient({ ...client, email: e.target.value })
                     }
-                    readOnly={!edit}
+                    readOnly
                   />
 
                   <p>RG:</p>
@@ -134,13 +158,15 @@ const profile = () => {
                     onChange={(e) =>
                       setClient({ ...client, nacionalidade: e.target.value })
                     }
-                    readOnly={!edit}
+                    readOnly
                   />
                 </div>
               </div>
             )}
             <div className="button-profile">
-              <button type="submit">Salvar</button>
+              <button type="submit" onClick={(e) => handleSave(e)}>
+                Salvar
+              </button>
               <button onClick={(e) => handleEdit(e)}>Editar</button>
             </div>
           </div>

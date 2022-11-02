@@ -8,13 +8,30 @@ import Profile from "../Pages/Profile";
 import { AuthProvider } from "../context/auth";
 
 const ChangeRoutes = () => {
+  const user = localStorage.getItem("user");
+
+  const ValidateUser = ({ children }) => {
+    if (user) {
+      return children;
+    } else {
+      return <Login />;
+    }
+  };
+
   return (
     <AuthProvider>
       <Routes>
         <Route path="/home" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/singup" element={<SingUp />} />
-        <Route path="/simulation" element={<Simulation />} />
+        <Route
+          path="/simulation"
+          element={
+            <ValidateUser>
+              <Simulation />
+            </ValidateUser>
+          }
+        />
         <Route path="/profile" element={<Profile />} />
         <Route path="*" element={<Home />} />
       </Routes>
