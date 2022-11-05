@@ -54,9 +54,19 @@ const NavBar = () => {
                   </button>
                 </li>
                 <li>
+                  <button className="button">
+                    <a href="public/download/tabelas_de_preco.pdf" download>
+                      Preços
+                    </a>
+                  </button>
+                </li>
+                <li>
                   <button className="button" onClick={goContats}>
                     Suporte
                   </button>
+                </li>
+                <li>
+                  <button className="button">Sair</button>
                 </li>
               </ul>
             </div>
