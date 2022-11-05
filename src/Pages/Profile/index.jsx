@@ -69,7 +69,7 @@ const profile = () => {
   return (
     <div className="container-profile-page">
       <button className="button-goback">
-        <a href="/Home">VOLTAR</a>
+        <a href="/home">VOLTAR</a>
       </button>
       <div className="profile-content">
         <form className="form-profile">
