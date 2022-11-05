@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./styles.scss";
 
 const Features = () => {
@@ -25,7 +26,7 @@ const Features = () => {
               </div>
               <div className="card-item-button">
                 <button>
-                  <a href="/simulation">Fazer Simulação</a>
+                  <Link to="/simulation">Fazer Simulação</Link>
                 </button>
               </div>
             </div>
@@ -44,7 +45,7 @@ const Features = () => {
               </div>
               <div className="card-item-button">
                 <button>
-                  <a href="/simulation">Fazer Simulação</a>
+                  <Link to="/simulation">Fazer Simulação</Link>
                 </button>
               </div>
             </div>
@@ -64,7 +65,7 @@ const Features = () => {
               </div>
               <div className="card-item-button">
                 <button>
-                  <a href="/simulation">Fazer Simulação</a>
+                  <Link to="/simulation">Fazer Simulação</Link>
                 </button>
               </div>
             </div>

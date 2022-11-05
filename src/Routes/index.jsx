@@ -33,7 +33,7 @@ const ChangeRoutes = () => {
           }
         />
         <Route path="/profile" element={<Profile />} />
-        {/* <Route path="*" element={<Home />} /> */}
+        <Route path="*" element={<Home />} />
       </Routes>
     </AuthProvider>
   );

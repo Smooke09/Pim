@@ -99,7 +99,7 @@ const Simulation = () => {
   return (
     <div className="container-simulation-page">
       <button className="button-goback">
-        <a href="/Home">VOLTAR</a>
+        <a href="/home">VOLTAR</a>
       </button>
       <div className="simulation-content">
         <form className="form-simulation" onSubmit={handleSubmit}>
