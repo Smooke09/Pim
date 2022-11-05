@@ -3,6 +3,7 @@ import Api from "../../API/connection";
 import Input from "../../Components/Input";
 import { Error, Success } from "../../Components/Error";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./styles.scss";
 
 const Simulation = () => {
@@ -99,7 +100,7 @@ const Simulation = () => {
   return (
     <div className="container-simulation-page">
       <button className="button-goback">
-        <a href="/home">VOLTAR</a>
+        <Link to="/home">VOLTAR</Link>
       </button>
       <div className="simulation-content">
         <form className="form-simulation" onSubmit={handleSubmit}>

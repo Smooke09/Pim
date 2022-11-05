@@ -3,6 +3,7 @@ import connection from "../../API/connection";
 import Input from "../../Components/Input";
 import "./styles.scss";
 import Spiner from "../../Components/Spineer";
+import { Link } from "react-router-dom";
 import { Success, Error } from "../../Components/Error";
 
 const profile = () => {
@@ -69,7 +70,7 @@ const profile = () => {
   return (
     <div className="container-profile-page">
       <button className="button-goback">
-        <a href="/home">VOLTAR</a>
+        <Link to="/home">VOLTAR</Link>
       </button>
       <div className="profile-content">
         <form className="form-profile">
