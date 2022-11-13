@@ -1,12 +1,39 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { Error } from "../../Components/Error";
+import connection from "../../API/connection";
+import Input from "../../Components/Input";
+
 import "./styles.scss";
 
-const SingUp = () => {
-  const [client, setClient] = useState({});
+const SingUpProfile = () => {
+  const navigate = useNavigate();
+
+  const [client, setClient] = useState({
+    nm_pessoa: "",
+    num_rg: "",
+    num_cpf_cnpj: "",
+    email: "",
+    num_contato: "",
+    estado_civil: "",
+  });
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (
+      client.nm_pessoa === "" ||
+      client.num_rg === "" ||
+      client.num_cpf_cnpj === "" ||
+      client.email === "" ||
+      client.num_contato === "" ||
+      client.estado_civil === ""
+    ) {
+      return Error({ message: "Preencha todos os campos" });
+    } else {
+      localStorage.setItem("client", JSON.stringify(client));
+      navigate("/singup/profile");
+    }
   };
 
   return (
@@ -22,29 +49,74 @@ const SingUp = () => {
               <div className="input-left-singUp">
                 <div className="div-input">
                   <span>Digite Seu nome:</span>
-                  <input type="text" placeholder="Digite seu nome" />
+                  <Input
+                    type="text"
+                    placeholder="Digite seu nome"
+                    value={client.nm_pessoa}
+                    onChange={(e) =>
+                      setClient({ ...client, nm_pessoa: e.target.value })
+                    }
+                  />
                 </div>
                 <div className="div-input">
                   <span>Digite seu RG:</span>
-                  <input type="number" placeholder="000000000" />
+                  <Input
+                    type="number"
+                    placeholder="000000000"
+                    value={client.num_rg}
+                    onChange={(e) =>
+                      setClient({ ...client, num_rg: e.target.value })
+                    }
+                  />
                 </div>
                 <div className="div-input">
                   <span>Digite seu CPF: </span>
-                  <input type="number" placeholder="123456789" />
+                  <Input
+                    type="number"
+                    placeholder="123456789"
+                    value={client.num_cpf_cnpj}
+                    onChange={(e) =>
+                      setClient({ ...client, num_cpf_cnpj: e.target.value })
+                    }
+                  />
                 </div>
               </div>
               <div className="input-right-singUp">
                 <div className="div-input">
                   <span>Email</span>
-                  <input type="text" placeholder="Digite seu email" />
+                  <Input
+                    type="text"
+                    placeholder="Digite seu email"
+                    value={client.email}
+                    onChange={(e) =>
+                      setClient({ ...client, email: e.target.value })
+                    }
+                  />
                 </div>
                 <div className="div-input">
                   <span>Telefone para contato:</span>
-                  <input type="text" placeholder="13981706262" />
+                  <Input
+                    type="text"
+                    placeholder="13981706262"
+                    value={client.num_contato}
+                    onChange={(e) =>
+                      setClient({ ...client, num_contato: e.target.value })
+                    }
+                  />
                 </div>
                 <div className="div-input">
                   <span>Estado civil:</span>
-                  <input type="text" placeholder="Estado Civil" />
+                  <Input
+                    type="text"
+                    placeholder="Estado Civil"
+                    value={client.estado_civil}
+                    onChange={(e) =>
+                      setClient({
+                        ...client,
+                        estado_civil: e.target.value.toUpperCase(),
+                      })
+                    }
+                  />
                 </div>
               </div>
             </div>
@@ -58,4 +130,4 @@ const SingUp = () => {
   );
 };
 
-export default SingUp;
+export default SingUpProfile;

@@ -48,7 +48,7 @@
     display: flex;
     width: 970px;
     max-width: 970px;
-    height: 510px;
+    height: 650px;
     border-radius: 10px;
 
     .form-singUp {
@@ -132,6 +132,21 @@
                 padding: 0 1rem;
               }
             }
+
+            select {
+              width: 70%;
+              height: 2.7rem;
+              margin-bottom: 1rem;
+              border: none;
+              border-radius: 5px;
+              outline: none;
+              padding: 0 1rem;
+
+              option {
+                width: 100%;
+                height: 100%;
+              }
+            }
           }
         }
 
@@ -140,8 +155,8 @@
           display: flex;
           justify-content: center;
           align-items: center;
-          flex-direction: column;
           margin-bottom: 20px;
+          flex-direction: column;
 
           button {
             width: 20%;

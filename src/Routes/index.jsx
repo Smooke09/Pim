@@ -2,7 +2,8 @@ import React from "react";
 import { Route, Routes, Link } from "react-router-dom";
 import Home from "../Pages/Home";
 import Login from "../Pages/Login";
-import SingUp from "../Pages/SingUp";
+import SingUp from "../Pages/SingUpProfile";
+import SingUpProfile from "../Pages/SingUp";
 import Simulation from "../Pages/Simulation";
 import Profile from "../Pages/Profile";
 import { AuthProvider } from "../context/auth";
@@ -23,7 +24,8 @@ const ChangeRoutes = () => {
       <Routes>
         <Route path="/home" element={<Home />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/singup" element={<SingUp />} />
+        <Route path="/singup" element={<SingUpProfile />} />
+        <Route path="/singup/profile" element={<SingUp />} />
         <Route
           path="/simulation"
           element={
