@@ -9,7 +9,8 @@ export const AuthProvider = ({ children }) => {
   const navigate = useNavigate();
   const [authenticated, setAuthenticated] = useState(false);
 
-  const login = (email, password) => {
+  const login = (email, password, loading) => {
+    loading(true);
     const user = {
       email,
       senha: password,
@@ -22,12 +23,13 @@ export const AuthProvider = ({ children }) => {
           user: response.data.user.email,
           token: response.data.token,
         };
-        localStorage.setItem("user", JSON.stringify(data));
         navigate("/home");
         Success({ message: "Login realizado com sucesso!" });
+        localStorage.setItem("user", JSON.stringify(data));
         setAuthenticated(true);
       })
       .catch((error) => {
+        loading(false);
         Error({
           message: error.response.data,
         });

@@ -4,10 +4,6 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/auth";
 import "./styles.scss";
 
-{
-  /*Inserção dos estilo da página*/
-}
-
 const NavBar = () => {
   const { authenticated, setAuthenticated } = useContext(AuthContext);
 
@@ -16,6 +12,12 @@ const NavBar = () => {
       setAuthenticated(true);
     }
   }, [setAuthenticated]);
+
+  const logout = () => {
+    localStorage.removeItem("user");
+    setAuthenticated(false);
+    window.location.reload();
+  };
 
   const goPlan = () => {
     window.scrollTo({
@@ -55,7 +57,7 @@ const NavBar = () => {
                 </li>
                 <li>
                   <button className="button">
-                    <a href="public/download/tabelas_de_preco.pdf" download>
+                    <a href="download/tabelas_de_preco.pdf" download>
                       Preços
                     </a>
                   </button>
@@ -66,7 +68,9 @@ const NavBar = () => {
                   </button>
                 </li>
                 <li>
-                  <button className="button">Sair</button>
+                  <button className="button" onClick={() => logout()}>
+                    Sair
+                  </button>
                 </li>
               </ul>
             </div>

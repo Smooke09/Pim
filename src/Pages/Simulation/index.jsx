@@ -11,8 +11,6 @@ const Simulation = () => {
 
   const { id } = JSON.parse(localStorage.getItem("user"));
 
-  console.log(id);
-
   const [client, setClient] = useState({
     name: "",
     rg: "",
@@ -36,7 +34,6 @@ const Simulation = () => {
 
   useEffect(() => {
     Api.get(`/users/${id}`).then((response) => {
-      console.log("RESPONSE DA API", response.data);
       const data = response.data.tb_pessoa;
       const client = data.tb_cliente[0];
 
@@ -69,8 +66,6 @@ const Simulation = () => {
       });
     });
   }, []);
-
-  console.log("clientes", client.fuma);
 
   const handleSubmit = (e) => {
     e.preventDefault();

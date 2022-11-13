@@ -8,9 +8,10 @@ import Profile from "../Pages/Profile";
 import { AuthProvider } from "../context/auth";
 
 const ChangeRoutes = () => {
-  const user = localStorage.getItem("user");
-
   const ValidateUser = ({ children }) => {
+    const user = localStorage.getItem("user");
+    console.log("user", user);
+
     if (user) {
       return children;
     } else {

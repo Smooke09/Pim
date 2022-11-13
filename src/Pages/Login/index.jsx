@@ -2,12 +2,13 @@ import React, { useState, useEffect, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/auth";
 import { Error, ErrorCard } from "../../Components/Error";
-
+import Spiner from "../../Components/Spineer";
 import "./styles.scss";
 
 const login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const { login } = useContext(AuthContext);
 
@@ -25,11 +26,13 @@ const login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setLoading(true);
     if (email === "" || password === "") {
       Error({ message: "Preencha todos os campos" });
+      setLoading(false);
       return;
     }
-    login(email, password);
+    login(email, password, setLoading);
   };
 
   return (
@@ -57,8 +60,14 @@ const login = () => {
               <Link>Esqueci minha senha</Link>
             </div>
             <div className="button-login">
-              <button type="submit">Login</button>
-              <Link to="/singup">Criar conta</Link>
+              {loading ? (
+                <Spiner />
+              ) : (
+                <>
+                  <button type="submit">Login</button>
+                  <Link to="/singup">Criar conta</Link>
+                </>
+              )}
             </div>
           </div>
           <div className="container-img fadeInRight">
