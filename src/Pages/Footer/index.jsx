@@ -26,7 +26,7 @@ const Footer = () => {
                 <img className="logo-footer" src="./img/logo2.png" alt="logo" /> {/*Inserção da logo*/}
             </div>
             <div className="div-email">
-                <img className="topSeguro-" src="./img/logo-top-brasil-seguros-png.png" alt="topSeguro" />
+                <img className="topSeguro-" src="./img/logo-top-brasil-seguros.png" alt="topSeguro" />
                 <a href="mailto: safetylife.rh@gmail.com" className="email">safetylife.rh@gmail.com</a>
             </div>
             <div className="div-ul">
