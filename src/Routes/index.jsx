@@ -10,7 +10,6 @@ import { AuthProvider } from "../context/auth";
 const ChangeRoutes = () => {
   const ValidateUser = ({ children }) => {
     const user = localStorage.getItem("user");
-    console.log("user", user);
 
     if (user) {
       return children;

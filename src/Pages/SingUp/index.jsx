@@ -7,7 +7,6 @@ const SingUp = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("teste");
   };
 
   return (
