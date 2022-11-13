@@ -12,7 +12,7 @@ const SingUp = () => {
   return (
     <div className="container-singUp-page">
       <button className="button-goback">
-        <a href="/login">VOLTAR</a>
+        <Link to="/login">VOLTAR</Link>
       </button>
       <div className="singUp-content">
         <form className="form-singUp" onSubmit={handleSubmit}>

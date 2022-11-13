@@ -38,7 +38,7 @@ const login = () => {
   return (
     <div className="container-login-page">
       <button className="button-goback">
-        <a href="/Home">VOLTAR</a>
+        <Link to="/home">VOLTAR</Link>
       </button>
       <div className="login-content">
         <form className="form-login" onSubmit={handleSubmit}>
