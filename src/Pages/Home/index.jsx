@@ -2,16 +2,16 @@ import React, { useState } from "react";
 import "./styles.scss";
 import NavBar from "../../Components/NavBar";
 import Features from "../Features";
+import { Link } from "react-router-dom";
 import About from "../About";
 import Contact from "../Contact";
 import Footer from "../Footer";
 
 const Home = () => {
-
-  const goTop = () =>{
+  const goTop = () => {
     window.scrollTo({
-      top: 0, 
-      behavior: 'smooth'
+      top: 0,
+      behavior: "smooth",
     });
   };
 
@@ -26,7 +26,7 @@ const Home = () => {
               lugar a toda hora
             </h2>
             <button>
-              <a href="/login">Fazer login</a>
+              <Link to="/login">Fazer login</Link>
             </button>
           </div>
         </div>
@@ -35,8 +35,9 @@ const Home = () => {
       <About />
       <Contact />
       <Footer />
-      <button className="to-top" onClick={goTop}>Voltar ao topo</button>
-      
+      <button className="to-top" onClick={goTop}>
+        Voltar ao topo
+      </button>
     </div>
   );
 };
