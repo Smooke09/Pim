@@ -1,11 +1,12 @@
 import React, { useContext } from "react";
 import { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/auth";
 import "./styles.scss";
 
 const NavBar = () => {
   const { authenticated, setAuthenticated } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (localStorage.getItem("user")) {
@@ -16,7 +17,7 @@ const NavBar = () => {
   const logout = () => {
     localStorage.removeItem("user");
     setAuthenticated(false);
-    window.location.reload();
+    navigate("/home");
   };
 
   const goPlan = () => {
