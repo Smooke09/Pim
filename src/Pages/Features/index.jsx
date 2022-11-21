@@ -26,7 +26,7 @@ const Features = () => {
               </div>
               <div className="card-item-button">
                 <button>
-                  <Link to="/simulation">Fazer Simulação</Link>
+                  <Link to="/modal/simulation">Fazer Simulação</Link>
                 </button>
               </div>
             </div>
@@ -45,7 +45,7 @@ const Features = () => {
               </div>
               <div className="card-item-button">
                 <button>
-                  <Link to="/simulation">Fazer Simulação</Link>
+                  <Link to="/modal/simulation">Fazer Simulação</Link>
                 </button>
               </div>
             </div>
@@ -65,7 +65,7 @@ const Features = () => {
               </div>
               <div className="card-item-button">
                 <button>
-                  <Link to="/simulation">Fazer Simulação</Link>
+                  <Link to="/modal/simulation">Fazer Simulação</Link>
                 </button>
               </div>
             </div>

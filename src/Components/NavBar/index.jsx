@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/auth";
+import { Success, ErrorCard } from "../Error";
 import "./styles.scss";
 
 const NavBar = () => {
@@ -15,9 +16,13 @@ const NavBar = () => {
   }, [setAuthenticated]);
 
   const logout = () => {
-    localStorage.removeItem("user");
-    setAuthenticated(false);
-    navigate("/home");
+    if (localStorage.getItem("user")) {
+      localStorage.removeItem("user");
+      setAuthenticated(false);
+      return Success({ message: "Logout realizado com sucesso!" });
+    }
+
+    ErrorCard({ message: "Você não está logado para sair!", type: "error" });
   };
 
   const goPlan = () => {

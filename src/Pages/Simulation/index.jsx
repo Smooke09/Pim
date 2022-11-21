@@ -4,13 +4,16 @@ import Input from "../../Components/Input";
 import { Error, Success } from "../../Components/Error";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import Modal from "../Modal";
 import "./styles.scss";
 
 const Simulation = () => {
   const navigate = useNavigate();
+  const [data, setData] = useState(true);
 
-  const { id } = JSON.parse(localStorage.getItem("user"));
+  const { id_pessoa, id } = JSON.parse(localStorage.getItem("user"));
 
+  const [modal, setModal] = useState(false);
   const [client, setClient] = useState({
     name: "",
     rg: "",
@@ -30,7 +33,11 @@ const Simulation = () => {
     profissao: "",
     risco_profissao: "",
   });
+  const [edit, setEdit] = useState(false);
+
   const [pessoaKey, setPessoaKey] = useState(null);
+
+  console.log(client);
 
   useEffect(() => {
     Api.get(`/users/${id}`).then((response) => {
@@ -52,20 +59,30 @@ const Simulation = () => {
         genero: data.genero,
         num_contato: convertTelBR(data?.num_contato),
         estado_civil: data.estado_civil,
-        nacionalidade: data.nacionalidade,
-        reside_brasil: data.reside_brasil,
         birth: data.dt_nascimento?.split("T")[0],
         hobbies: client?.hobbies,
         fuma: client?.fuma,
         registro_conducao: client?.registro_conducao,
         faixa_renda: client?.faixa_renda,
         politicamente_exposto: client?.politicamente_exposto,
-        vinculo_politico: client?.vinculo_politicamente_exposto,
         profissao: client?.profissao,
         risco_profissao: "PEQUENO",
       });
     });
   }, []);
+
+  useEffect(() => {
+    if (id_pessoa) {
+      Api.get(`/client/form/unity/${id_pessoa}`).then((response) => {
+        console.log(response.data);
+        if (response.data) setData(false);
+      });
+    }
+  });
+
+  const changeEdit = () => {
+    setEdit(!edit);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -95,7 +112,7 @@ const Simulation = () => {
   return (
     <div className="container-simulation-page">
       <button className="button-goback">
-        <Link to="/home">VOLTAR</Link>
+        <Link to="/modal/simulation">VOLTAR</Link>
       </button>
       <div className="simulation-content">
         <form className="form-simulation" onSubmit={handleSubmit}>
@@ -110,26 +127,24 @@ const Simulation = () => {
                   onChange={(e) =>
                     setClient({ ...client, name: e.target.value })
                   }
-                  readOnly
+                  readOnly={!edit}
                 />
                 <p>RG:</p>
                 <Input
                   className="input-normal"
-                  value={+client?.rg}
+                  value={client?.rg}
                   onChange={(e) => setClient({ ...client, rg: e.target.value })}
-                  type="number"
-                  readOnly
+                  readOnly={!edit}
                 />
 
                 <p>CPF:</p>
                 <Input
                   className="input-normal"
-                  value={+client?.cpf}
+                  value={client?.cpf}
                   onChange={(e) =>
                     setClient({ ...client, cpf: e.target.value })
                   }
-                  type="number"
-                  readOnly
+                  readOnly={!edit}
                 />
 
                 <div className="div-checkbox">
@@ -160,7 +175,7 @@ const Simulation = () => {
                         onChange={(e) =>
                           setClient({ ...client, genero: e.target.value })
                         }
-                        readOnly
+                        readOnly={!edit}
                       />
                       <label className={{ padding: "2px" }}>Feminino</label>
 
@@ -172,7 +187,7 @@ const Simulation = () => {
                         onChange={(e) =>
                           setClient({ ...client, genero: e.target.value })
                         }
-                        readOnly
+                        readOnly={!edit}
                       />
                       <label className={{ padding: "2px" }}>Outros</label>
                     </>
@@ -186,7 +201,7 @@ const Simulation = () => {
                   onChange={(e) =>
                     setClient({ ...client, num_contato: e.target.value })
                   }
-                  readOnly
+                  readOnly={!edit}
                 />
                 <p>Estado civil:</p>
                 <Input
@@ -195,7 +210,7 @@ const Simulation = () => {
                   onChange={(e) =>
                     setClient({ ...client, estado_civil: e.target.value })
                   }
-                  readOnly
+                  readOnly={!edit}
                 />
 
                 <p>Nacionalidade:</p>
@@ -205,7 +220,6 @@ const Simulation = () => {
                   onChange={(e) =>
                     setClient({ ...client, nacionalidade: e.target.value })
                   }
-                  readOnly
                 />
                 <div className="div-checkbox">
                   <p>Reside no Brasil?:</p>
@@ -228,7 +242,7 @@ const Simulation = () => {
                             reside_brasil: e.target.value,
                           })
                         }
-                        readOnly
+                        readOnly={!edit}
                       />
                       <Input
                         label="Não"
@@ -242,7 +256,7 @@ const Simulation = () => {
                             reside_brasil: e.target.value,
                           })
                         }
-                        readOnly
+                        readOnly={!edit}
                       />
                     </>
                   </fieldset>
@@ -257,7 +271,7 @@ const Simulation = () => {
                     setClient({ ...client, birth: e.target.value })
                   }
                   type="date"
-                  readOnly
+                  readOnly={!edit}
                 />
                 <p>Hobbies:</p>
                 <Input
@@ -285,7 +299,7 @@ const Simulation = () => {
                         onChange={(e) =>
                           setClient({ ...client, fuma: e.target.value })
                         }
-                        readOnly
+                        readOnly={!edit}
                       />
                       <Input
                         label="Não"
@@ -296,7 +310,7 @@ const Simulation = () => {
                         onChange={(e) =>
                           setClient({ ...client, fuma: e.target.value })
                         }
-                        readOnly
+                        readOnly={!edit}
                       />
                     </>
                   </fieldset>
@@ -306,7 +320,10 @@ const Simulation = () => {
                   className="input-normal"
                   value={client?.registro_conducao}
                   onChange={(e) =>
-                    setClient({ ...client, registro_conducao: e.target.value })
+                    setClient({
+                      ...client,
+                      registro_conducao: e.target.value,
+                    })
                   }
                 />
 
@@ -316,6 +333,15 @@ const Simulation = () => {
                   value={+client?.faixa_renda}
                   onChange={(e) =>
                     setClient({ ...client, faixa_renda: +e.target.value })
+                  }
+                  type="number"
+                />
+                <p>Profissao</p>
+                <Input
+                  className="input-normal"
+                  value={client?.profissao}
+                  onChange={(e) =>
+                    setClient({ ...client, profissao: e.target.value })
                   }
                   type="number"
                 />
@@ -335,7 +361,7 @@ const Simulation = () => {
                             politicamenteExposto: e.target.value,
                           })
                         }
-                        readOnly
+                        readOnly={!edit}
                       />
                       <Input
                         type="radio"
@@ -349,81 +375,25 @@ const Simulation = () => {
                             politicamenteExposto: e.target.value,
                           })
                         }
-                        readOnly
+                        readOnly={!edit}
                       />
                     </>
                   </fieldset>
                 </div>
-                <p>CEP:</p>
-                <input
-                  type="number"
-                  className="input-normal"
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-              </div>
-              <div className="div-imput">
-                <p>Tipo de imóvel:</p>
-                <input
-                  className="input-normal"
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-                <div className="div-checkbox">
-                  <p>Residência propria?:</p>
-                  <input className="input-checkbox" type="checkbox" />
-                  <label>Sim</label>
-                  <input className="input-checkbox" type="checkbox" />
-                  <label>Não</label>
-                </div>
-                <p>
-                  Complemento, número da residência e detalhes sobre a moradia
-                  caso necessário
-                </p>
-                <input
-                  className="input-normal"
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-                <p>Trabalho:</p>
-                <Input
-                  className="input-normal"
-                  value={client?.profissao}
-                  onChange={(e) =>
-                    setClient({ ...client, profissao: e.target.value })
-                  }
-                />
 
-                <div className="div-checkbox">
-                  <p>Risco do trabalho:</p>
-                  <fieldset style={{ border: "none", display: "flex" }}>
-                    <>
-                      <select
-                        value={client?.risco_profissao}
-                        onChange={(e) =>
-                          setClient({
-                            ...client,
-                            risco_profissao: e.target.value,
-                          })
-                        }
-                      >
-                        <option value="NULO">Nulo</option>
-                        <option value="BAIXO">Baixo</option>
-                        <option value="MEDIO">Médio</option>
-                        <option value="ALTO">Alto</option>
-                        <option value="EXTREMO">Extremo</option>
-                      </select>
-                    </>
-                  </fieldset>
-                </div>
                 <p>Email:</p>
                 <Input
                   className="input-normal"
                   value={client?.email}
-                  readOnly
+                  readOnly={!edit}
                 />
               </div>
             </div>
-            <div className="button-simulation">
-              <button type="submit">Simular</button>
-            </div>
+            {data && (
+              <div className="button-simulation">
+                <button type="submit">Simular</button>
+              </div>
+            )}
           </div>
         </form>
       </div>

@@ -17,10 +17,12 @@ const SingUp = () => {
     reside_brasil: true,
   });
 
+
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     setLoading(true);
     const item = localStorage.getItem("client");
     const clientStorage = JSON.parse(item);
@@ -119,7 +121,7 @@ const SingUp = () => {
                   <span>Nacionalidade :</span>
                   <Input
                     type="text"
-                    placeholder="Estado Civil"
+                    placeholder="Nacionalidade"
                     value={client.nacionalidade}
                     onChange={(e) =>
                       setClient({

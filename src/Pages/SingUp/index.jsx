@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Error } from "../../Components/Error";
 import connection from "../../API/connection";
 import Input from "../../Components/Input";
+import isValidCPF from "../../helpers/isValidCpf";
 
 import "./styles.scss";
 
@@ -20,6 +21,8 @@ const SingUpProfile = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    isValidCPF(client.num_cpf_cnpj);
 
     if (
       client.nm_pessoa === "" ||
