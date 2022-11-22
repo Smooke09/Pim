@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Api from "../../API/connection";
 import Input from "../../Components/Input";
-import { Error, Success } from "../../Components/Error";
+import { Error, ErrorCard, Success } from "../../Components/Error";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Modal from "../Modal";
@@ -20,24 +20,16 @@ const Simulation = () => {
     cpf: "",
     genero: "",
     num_contato: "",
-    estado_civil: "",
-    nacionalidade: "",
-    reside_brasil: "",
     birth: "",
+    pessoa_key: id_pessoa,
+    estado_civil: "",
     hobbies: "",
-    fuma: false,
-    RegistroDeConducao: "",
-    renda: 0,
-    politicamenteExposto: false,
-    vinculoPolitico: false,
     profissao: "",
-    risco_profissao: "",
+    renda: "",
   });
   const [edit, setEdit] = useState(false);
 
   const [pessoaKey, setPessoaKey] = useState(null);
-
-  console.log(client);
 
   useEffect(() => {
     Api.get(`/users/${id}`).then((response) => {
@@ -57,16 +49,12 @@ const Simulation = () => {
         rg: data.num_rg,
         cpf: data.num_cpf_cnpj,
         genero: data.genero,
-        num_contato: convertTelBR(data?.num_contato),
         estado_civil: data.estado_civil,
+        num_contato: convertTelBR(data?.num_contato),
+        profissao: client.profissao,
+        hobbies: client.hobbies,
+        renda: client.faixa_renda,
         birth: data.dt_nascimento?.split("T")[0],
-        hobbies: client?.hobbies,
-        fuma: client?.fuma,
-        registro_conducao: client?.registro_conducao,
-        faixa_renda: client?.faixa_renda,
-        politicamente_exposto: client?.politicamente_exposto,
-        profissao: client?.profissao,
-        risco_profissao: "PEQUENO",
       });
     });
   }, []);
@@ -74,8 +62,11 @@ const Simulation = () => {
   useEffect(() => {
     if (id_pessoa) {
       Api.get(`/client/form/unity/${id_pessoa}`).then((response) => {
-        console.log(response.data);
-        if (response.data) setData(false);
+        navigate("/modal/simulation");
+        ErrorCard({
+          message: "Você já possui uma simulação em andamento!",
+          type: "error",
+        });
       });
     }
   });
@@ -88,17 +79,16 @@ const Simulation = () => {
     e.preventDefault();
 
     const data = {
+      status: "pendente",
+      pessoa_key: pessoaKey,
+      funcionario_id: 1,
       hobbies: client.hobbies,
-      fuma: client.fuma,
-      registro_conducao: client.registro_conducao,
-      faixa_renda: client.faixa_renda,
-      politicamente_exposto: client.politicamente_exposto,
-      vinculo_politico: client.vinculo_politico,
       profissao: client.profissao,
-      risco_profissao: client.risco_profissao,
+      faixa_renda: client.renda,
+      client_id: client.id,
     };
 
-    Api.post(`/client/form/create/${pessoaKey}`, data)
+    Api.post(`/client/form/create`, data)
       .then((response) => {
         Success({ message: "Dados enviados com sucesso!" });
       })
@@ -212,55 +202,6 @@ const Simulation = () => {
                   }
                   readOnly={!edit}
                 />
-
-                <p>Nacionalidade:</p>
-                <Input
-                  className="input-normal"
-                  value={client?.nacionalidade}
-                  onChange={(e) =>
-                    setClient({ ...client, nacionalidade: e.target.value })
-                  }
-                />
-                <div className="div-checkbox">
-                  <p>Reside no Brasil?:</p>
-                  <fieldset
-                    style={{
-                      border: "none",
-                      display: "flex",
-                    }}
-                  >
-                    <>
-                      <Input
-                        label="Sim"
-                        type="radio"
-                        name="reside_brasil"
-                        value={client?.reside_brasil}
-                        checked={client?.reside_brasil}
-                        onChange={(e) =>
-                          setClient({
-                            ...client,
-                            reside_brasil: e.target.value,
-                          })
-                        }
-                        readOnly={!edit}
-                      />
-                      <Input
-                        label="Não"
-                        type="radio"
-                        name="reside_brasil"
-                        value={client?.reside_brasil}
-                        checked={!client?.reside_brasil}
-                        onChange={(e) =>
-                          setClient({
-                            ...client,
-                            reside_brasil: e.target.value,
-                          })
-                        }
-                        readOnly={!edit}
-                      />
-                    </>
-                  </fieldset>
-                </div>
               </div>
               <div className="div-imput">
                 <p>Data de nascimento:</p>
@@ -273,6 +214,21 @@ const Simulation = () => {
                   type="date"
                   readOnly={!edit}
                 />
+
+                <p>Email:</p>
+                <Input
+                  className="input-normal"
+                  value={client?.email}
+                  readOnly={!edit}
+                />
+                <p>Profissão:</p>
+                <Input
+                  className="input-normal"
+                  value={client?.profissao}
+                  onChange={(e) =>
+                    setClient({ ...client, profissao: e.target.value })
+                  }
+                />
                 <p>Hobbies:</p>
                 <Input
                   className="input-normal"
@@ -281,111 +237,14 @@ const Simulation = () => {
                     setClient({ ...client, hobbies: e.target.value })
                   }
                 />
-                <div className="div-checkbox">
-                  <p>Fuma?:</p>
-                  <fieldset
-                    style={{
-                      border: "none",
-                      display: "flex",
-                    }}
-                  >
-                    <>
-                      <Input
-                        label="Sim"
-                        type="radio"
-                        name="fuma"
-                        value={client?.fuma}
-                        checked={!client?.fuma}
-                        onChange={(e) =>
-                          setClient({ ...client, fuma: e.target.value })
-                        }
-                        readOnly={!edit}
-                      />
-                      <Input
-                        label="Não"
-                        type="radio"
-                        name="fuma"
-                        value={client?.fuma}
-                        checked={!client?.fuma}
-                        onChange={(e) =>
-                          setClient({ ...client, fuma: e.target.value })
-                        }
-                        readOnly={!edit}
-                      />
-                    </>
-                  </fieldset>
-                </div>
-                <p>Registro de condução:</p>
+                <p>Faixa de renda:</p>
                 <Input
                   className="input-normal"
-                  value={client?.registro_conducao}
+                  value={+client?.renda}
                   onChange={(e) =>
-                    setClient({
-                      ...client,
-                      registro_conducao: e.target.value,
-                    })
-                  }
-                />
-
-                <p>Faixa de renda mensal:</p>
-                <Input
-                  className="input-normal"
-                  value={+client?.faixa_renda}
-                  onChange={(e) =>
-                    setClient({ ...client, faixa_renda: +e.target.value })
+                    setClient({ ...client, renda: +e.target.value })
                   }
                   type="number"
-                />
-                <p>Profissao</p>
-                <Input
-                  className="input-normal"
-                  value={client?.profissao}
-                  onChange={(e) =>
-                    setClient({ ...client, profissao: e.target.value })
-                  }
-                  type="number"
-                />
-                <div className="div-checkbox">
-                  <p>Politicamente exposto?:</p>
-                  <fieldset style={{ border: "none", display: "flex" }}>
-                    <>
-                      <Input
-                        type="radio"
-                        label="Sim"
-                        name="politico"
-                        value={client?.politicamenteExposto}
-                        checked={client?.politico}
-                        onChange={(e) =>
-                          setClient({
-                            ...client,
-                            politicamenteExposto: e.target.value,
-                          })
-                        }
-                        readOnly={!edit}
-                      />
-                      <Input
-                        type="radio"
-                        label="Não"
-                        name="politico"
-                        value={client?.politicamenteExposto}
-                        checked={!client?.politico}
-                        onChange={(e) =>
-                          setClient({
-                            ...client,
-                            politicamenteExposto: e.target.value,
-                          })
-                        }
-                        readOnly={!edit}
-                      />
-                    </>
-                  </fieldset>
-                </div>
-
-                <p>Email:</p>
-                <Input
-                  className="input-normal"
-                  value={client?.email}
-                  readOnly={!edit}
                 />
               </div>
             </div>

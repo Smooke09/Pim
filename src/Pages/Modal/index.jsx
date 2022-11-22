@@ -47,7 +47,7 @@ const Modal = ({ setModal }) => {
             </button>
             <button
               className="button-acompanhar"
-              onClick={() => navigate("/simulation")}
+              onClick={() => navigate("/verify")}
             >
               Acompanhar Solicitacao
             </button>

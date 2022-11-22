@@ -3,12 +3,12 @@
   justify-content: center;
   align-items: center;
   background: linear-gradient(
-    rgba(194, 194, 194, 0.548),
-    rgba(167, 167, 167, 0.7)
-  ),
-  url(../img/backgroundLogin.jpg);
+      rgba(194, 194, 194, 0.548),
+      rgba(167, 167, 167, 0.7)
+    ),
+    url(../img/backgroundLogin.jpg);
   background-size: cover;
-  height: 100%;
+  height: 100vh;
   width: 100%;
 
   .button-goback {
@@ -78,7 +78,7 @@
         .imputs-div {
           display: flex;
 
-          .div-imput{
+          .div-imput {
             //background-color: #b7dcfc;
             padding-left: 1%;
             margin-right: 2%;
@@ -116,14 +116,12 @@
               .input-checkbox {
                 margin-bottom: 5%;
               }
-
             }
           }
 
           #input1 {
             border-left: none;
           }
-          
         }
 
         .button-simulation {

@@ -9,6 +9,7 @@ import Simulation from "../Pages/Simulation";
 import Profile from "../Pages/Profile";
 import { AuthProvider } from "../context/auth";
 import Modal from "../Pages/Modal";
+import VerifyModal from "../Pages/VerifyForm";
 
 const ChangeRoutes = () => {
   const ValidateUser = ({ children }) => {
@@ -38,6 +39,7 @@ const ChangeRoutes = () => {
         />
         <Route path="/profile" element={<Profile />} />
         <Route path="/modal/simulation" element={<Modal />} />
+        <Route path="/verify" element={<VerifyModal />} />
         <Route path="*" element={<Home />} />
       </Routes>
     </AuthProvider>
