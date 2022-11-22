@@ -25,7 +25,7 @@ const VerifyModal = () => {
 
       setChamado({
         status: chamado.status,
-        funcionario_id: chamado.funcionario_id,
+        funcionario_resp: chamado.funcionario_resp,
         data: date,
         id: chamado.id,
       });
@@ -50,7 +50,7 @@ const VerifyModal = () => {
             <tr>
               <td>{chamado.data}</td>
               <td>{chamado.status}</td>
-              <td>{chamado.funcionario_id}</td>
+              <td>{chamado.funcionario_resp}</td>
             </tr>
           </tbody>
         </table>

@@ -5,10 +5,12 @@
 ## Instruções
 
 - Para instalar os pacotes tanto na pasta backend, quanto nas pastas frontend
-  npm install
+
+        yarn install
+
 - Para iniciar a aplicação backend
 
-        npm run dev
+        yarn run dev
 
 <br>
 <br>

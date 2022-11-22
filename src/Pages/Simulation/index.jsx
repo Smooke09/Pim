@@ -16,6 +16,7 @@ const Simulation = () => {
   const [modal, setModal] = useState(false);
   const [client, setClient] = useState({
     name: "",
+    email: "",
     rg: "",
     cpf: "",
     genero: "",
@@ -33,31 +34,29 @@ const Simulation = () => {
 
   useEffect(() => {
     Api.get(`/users/${id}`).then((response) => {
+      console.log(response);
       const data = response.data.tb_pessoa;
       const client = data.tb_cliente[0];
-
+      console.log(client);
       const convertTelBR = (tel) => {
         const telBR = tel.replace(/(\d{2})(\d{5})(\d{4})/, "($1) $2-$3");
         return telBR;
       };
-
       setPessoaKey(response.data.pessoa_key);
-
+      console.log(data.nm_pessoa);
       setClient({
         name: data.nm_pessoa,
         email: response.data.email,
         rg: data.num_rg,
         cpf: data.num_cpf_cnpj,
         genero: data.genero,
-        estado_civil: data.estado_civil,
-        num_contato: convertTelBR(data?.num_contato),
-        profissao: client.profissao,
-        hobbies: client.hobbies,
-        renda: client.faixa_renda,
-        birth: data.dt_nascimento?.split("T")[0],
+        num_contato: convertTelBR(data.num_contato),
+        birth: data.dt_nascimento,
       });
     });
   }, []);
+
+  console.log(client);
 
   useEffect(() => {
     if (id_pessoa) {
@@ -70,10 +69,6 @@ const Simulation = () => {
       });
     }
   });
-
-  const changeEdit = () => {
-    setEdit(!edit);
-  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
