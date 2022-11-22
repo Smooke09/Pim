@@ -8,7 +8,7 @@
     ),
     url(../img/backgroundLogin.jpg);
   background-size: cover;
-  height: 100vh;
+  //height: 100vh;
   width: 100%;
 
   .button-goback {
@@ -48,43 +48,50 @@
     display: flex;
     width: 970px;
     max-width: 970px;
-    height: 650px;
+    height: 100%;
     border-radius: 10px;
+    margin: 5%;
 
     .form-singUp {
       display: flex;
       width: 100%;
+      
       .singUp-form {
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
+        //justify-content: center;
         width: 100%;
         height: 100%;
 
         img {
-          width: 200px;
-          height: 200px;
+          width: 130px;
+          height: 70px;
           margin-top: 20px;
+          margin-bottom: 20px;
         }
 
         .input-content-singUp {
           display: flex;
           width: 100%;
-          height: 100%;
+          height: 50%;
           justify-content: center;
-          margin-bottom: 10px;
-          .input-left-singUp {
+          //margin-bottom: 10px;
+          //margin-left: 12%;
+          //margin-top: 5%;
+
+          .input-singUp {
             display: flex;
             flex-direction: column;
-            width: 50%;
-            margin-left: 30px;
-            justify-content: center;
+            width: max-content;
+            //margin-left: 30px;
+            //justify-content: center;
 
             .div-input {
               display: flex;
               flex-direction: column;
-              width: 100%;
+              width: 250px;
+              margin: auto 20px auto 20px;
               span {
                 text-align: left;
                 font-size: 15px;
@@ -93,58 +100,13 @@
               }
 
               input {
-                width: 70%;
-                height: 2.7rem;
-                margin-bottom: 1rem;
-                border: none;
-                border-radius: 5px;
-                outline: none;
-                padding: 0 1rem;
-              }
-            }
-          }
-
-          .input-right-singUp {
-            display: flex;
-            flex-direction: column;
-            width: 50%;
-            padding: 30px;
-            align-items: center;
-            justify-content: center;
-
-            .div-input {
-              display: flex;
-              flex-direction: column;
-              width: 100%;
-              span {
-                text-align: left;
-                font-size: 15px;
-                font-weight: 600;
-                margin-bottom: 10px;
-              }
-              input {
-                width: 70%;
-                height: 2.7rem;
-                margin-bottom: 1rem;
-                border: none;
-                border-radius: 5px;
-                outline: none;
-                padding: 0 1rem;
-              }
-            }
-
-            select {
-              width: 70%;
-              height: 2.7rem;
-              margin-bottom: 1rem;
-              border: none;
-              border-radius: 5px;
-              outline: none;
-              padding: 0 1rem;
-
-              option {
                 width: 100%;
-                height: 100%;
+                height: 2.7rem;
+                margin-bottom: 1rem;
+                border: none;
+                border-radius: 5px;
+                outline: none;
+                padding: 0 1rem;
               }
             }
           }

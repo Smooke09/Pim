@@ -262,7 +262,7 @@ const Simulation = () => {
                   </fieldset>
                 </div>
               </div>
-              <div className="div-imput">
+              <div className="div-imput" id="input2">
                 <p>Data de nascimento:</p>
                 <Input
                   className="input-normal"

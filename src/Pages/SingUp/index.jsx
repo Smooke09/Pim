@@ -49,7 +49,7 @@ const SingUpProfile = () => {
           <div className="singUp-form fadeInLeft ">
             <img src="img/logo2.png" alt="logo" />
             <div className="input-content-singUp">
-              <div className="input-left-singUp">
+              <div className="input-singUp">
                 <div className="div-input">
                   <span>Digite Seu nome:</span>
                   <Input
@@ -84,7 +84,7 @@ const SingUpProfile = () => {
                   />
                 </div>
               </div>
-              <div className="input-right-singUp">
+              <div className="input-singUp">
                 <div className="div-input">
                   <span>Email</span>
                   <Input

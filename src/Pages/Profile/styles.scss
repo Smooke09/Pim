@@ -8,7 +8,7 @@
     ),
     url(../img/backgroundLogin.jpg);
   background-size: cover;
-  height: 100vh;
+  //height: 100vh;
   width: 100%;
 
   .button-goback {
@@ -46,8 +46,8 @@
     background-color: #b1bbc4;
     box-shadow: 0px 1px 5px 3px rgb(197, 197, 197);
     display: flex;
-    width: 970px;
-    max-width: 970px;
+    width: 920px;
+    max-width: 920px;
     height: 7 0%;
     border-radius: 10px;
     margin-top: 2%;
@@ -65,6 +65,7 @@
         justify-content: center;
         width: 100%;
         height: 100%;
+        //border: solid red 2px;
 
         img {
           width: 130px;
@@ -83,7 +84,7 @@
           .div-imput {
             padding-left: 1%;
             margin-right: 2%;
-            margin-top: 7%;
+            margin-top: 2%;
             border: none;
 
             .div-h1 {

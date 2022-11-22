@@ -150,7 +150,6 @@ const profile = () => {
                     }
                     readOnly={!edit}
                   />
-
                   <p>Nacionalidade:</p>
                   <Input
                     className="input-normal"
