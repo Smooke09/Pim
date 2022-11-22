@@ -34,7 +34,7 @@ const Simulation = () => {
 
   useEffect(() => {
     Api.get(`/users/${id}`).then((response) => {
-      console.log(response);
+      console.log("repsonse full", response);
       const data = response.data.tb_pessoa;
       const client = data.tb_cliente[0];
       console.log(client);
@@ -52,6 +52,7 @@ const Simulation = () => {
         genero: data.genero,
         num_contato: convertTelBR(data.num_contato),
         birth: data.dt_nascimento,
+        estado_civil: client.estado_civil,
       });
     });
   }, []);
