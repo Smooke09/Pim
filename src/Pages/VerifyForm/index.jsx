@@ -9,28 +9,28 @@ const VerifyModal = () => {
   const navigate = useNavigate();
   const [chamado, setChamado] = useState({
     status: "",
-    funcionario_id: "",
+    funcionario_resp: "",
     data: "",
     id: "",
   });
 
-  const { id_pessoa, id } = JSON.parse(localStorage.getItem("user"));
+  const { cliente_id } = JSON.parse(localStorage.getItem("user"));
 
   useEffect(() => {
-    Api.get(`/client/form/unity/${id_pessoa}`).then((response) => {
+    Api.get(`/client/form/unity/${cliente_id}`).then((response) => {
       console.log(response);
       const chamado = response.data.tb_chamado[0];
 
-      const date = chamado.data.split("T")[0];
+      const date = chamado.data?.split("T")[0];
 
       setChamado({
-        status: chamado.status,
-        funcionario_resp: chamado.funcionario_resp,
+        status: chamado?.status,
+        funcionario_resp: chamado?.funcionario_resp,
         data: date,
-        id: chamado.id,
+        id: chamado?.id,
       });
     });
-  });
+  }, []);
 
   return (
     <div className="container-modal-page">

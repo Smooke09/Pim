@@ -11,7 +11,7 @@ const Simulation = () => {
   const navigate = useNavigate();
   const [data, setData] = useState(true);
 
-  const { id_pessoa, id } = JSON.parse(localStorage.getItem("user"));
+  const { cliente_id, id } = JSON.parse(localStorage.getItem("user"));
 
   const [modal, setModal] = useState(false);
   const [client, setClient] = useState({
@@ -22,7 +22,7 @@ const Simulation = () => {
     genero: "",
     num_contato: "",
     birth: "",
-    pessoa_key: id_pessoa,
+    pessoa_key: cliente_id,
     estado_civil: "",
     hobbies: "",
     profissao: "",
@@ -37,22 +37,30 @@ const Simulation = () => {
       console.log("repsonse full", response);
       const data = response.data.tb_pessoa;
       const client = data.tb_cliente[0];
+
+      const newDate = data?.dt_nascimento.split("T")[0];
+
       console.log(client);
+
       const convertTelBR = (tel) => {
         const telBR = tel.replace(/(\d{2})(\d{5})(\d{4})/, "($1) $2-$3");
         return telBR;
       };
+
+      console.log("data", data.dt_nascimento);
       setPessoaKey(response.data.pessoa_key);
-      console.log(data.nm_pessoa);
       setClient({
-        name: data.nm_pessoa,
-        email: response.data.email,
-        rg: data.num_rg,
-        cpf: data.num_cpf_cnpj,
-        genero: data.genero,
-        num_contato: convertTelBR(data.num_contato),
-        birth: data.dt_nascimento,
-        estado_civil: client.estado_civil,
+        name: data?.nm_pessoa,
+        email: response?.data.email,
+        rg: data?.num_rg,
+        cpf: data?.num_cpf_cnpj,
+        genero: data?.genero,
+        num_contato: convertTelBR(data?.num_contato),
+        birth: newDate,
+        estado_civil: data?.estado_civil,
+        hobbies: client?.hobbies,
+        profissao: client?.profissao,
+        renda: client?.faixa_renda,
       });
     });
   }, []);
@@ -60,8 +68,8 @@ const Simulation = () => {
   console.log(client);
 
   useEffect(() => {
-    if (id_pessoa) {
-      Api.get(`/client/form/unity/${id_pessoa}`).then((response) => {
+    if (cliente_id) {
+      Api.get(`/client/form/unity/${cliente_id}`).then((response) => {
         navigate("/modal/simulation");
         ErrorCard({
           message: "Você já possui uma simulação em andamento!",
@@ -86,7 +94,16 @@ const Simulation = () => {
 
     Api.post(`/client/form/create`, data)
       .then((response) => {
-        Success({ message: "Dados enviados com sucesso!" });
+        console.log(response);
+        const user = localStorage.getItem("user");
+        const userJson = JSON.parse(user);
+        const newUser = {
+          ...userJson,
+          cliente_id: response.data.cliente_id,
+        };
+        console.log("newUser ", newUser);
+
+        localStorage.setItem("user", JSON.stringify(newUser));
       })
       .catch((error) => {
         Error({
