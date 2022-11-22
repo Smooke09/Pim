@@ -77,12 +77,13 @@
 
         .imputs-div {
           display: flex;
+          right: 2.2%;
 
           .div-imput {
             //background-color: #b7dcfc;
             padding-left: 1%;
-            margin-right: 2%;
-            border-left: rgb(68, 64, 64) 2px solid;
+            //margin-right: 2%;
+            //border-left: rgb(68, 64, 64) 2px solid;
             //border-right: rgb(68, 64, 64) 2px solid;
             p {
               margin-left: 1%;
@@ -120,7 +121,10 @@
           }
 
           #input1 {
-            border-left: none;
+            padding-right: 3%;
+          }
+          #input2 {
+            padding-left: 3%;
           }
         }
 

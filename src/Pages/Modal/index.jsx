@@ -23,10 +23,10 @@ const Modal = ({ setModal }) => {
       </button>
       <div className="modal-content">
         <div className="modal-header">
-          <h1>Solicitar Simulacao</h1>
-          <p>
-            Aqui voce pode acompanha sua solicitacao ou <br />
-            fazer uma nova soliciatacao
+          <h1>Solicitar Simulação</h1>
+          <p> 
+            Aqui você pode acompanha sua solicitação ou <br />
+            fazer uma nova solicitação
           </p>
         </div>
         <div className="modal-body">
@@ -43,13 +43,13 @@ const Modal = ({ setModal }) => {
                 navigate("/simulation");
               }}
             >
-              Solicitar Simulacao
+              Solicitar Simulação
             </button>
             <button
               className="button-acompanhar"
               onClick={() => navigate("/verify")}
             >
-              Acompanhar Solicitacao
+              Acompanhar Solicitação
             </button>
           </div>
         </div>
