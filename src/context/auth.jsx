@@ -22,7 +22,7 @@ export const AuthProvider = ({ children }) => {
           id: response.data.user.id,
           user: response.data.user.email,
           token: response.data.token,
-          id_pessoa: response.data.user.id_pessoa,
+          cliente_id: response.data.user.id_pessoa,
         };
         navigate("/home");
         Success({ message: "Login realizado com sucesso!" });
