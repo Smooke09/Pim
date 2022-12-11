@@ -8,9 +8,11 @@ const Modal = ({ setModal }) => {
   const [data, setData] = useState(false);
   const navigate = useNavigate();
 
-  const { id_pessoa, id } = JSON.parse(localStorage.getItem("user"));
-
   useEffect(() => {
+    if (!localStorage.getItem("user")) return navigate("/login");
+
+    const { id_pessoa } = JSON.parse(localStorage.getItem("user"));
+
     Api.get(`/client/form/unity/${id_pessoa}`).then((response) => {
       if (response.data) setData(true);
     });
@@ -24,7 +26,7 @@ const Modal = ({ setModal }) => {
       <div className="modal-content">
         <div className="modal-header">
           <h1>Solicitar Simulação</h1>
-          <p> 
+          <p>
             Aqui você pode acompanha sua solicitação ou <br />
             fazer uma nova solicitação
           </p>
