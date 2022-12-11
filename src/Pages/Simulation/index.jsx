@@ -5,11 +5,13 @@ import { Error, ErrorCard, Success } from "../../Components/Error";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Modal from "../Modal";
+import Spiner from "../../Components/Spineer";
 import "./styles.scss";
 
 const Simulation = () => {
   const navigate = useNavigate();
   const [data, setData] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   const { cliente_id, id } = JSON.parse(localStorage.getItem("user"));
 
@@ -34,20 +36,16 @@ const Simulation = () => {
 
   useEffect(() => {
     Api.get(`/users/${id}`).then((response) => {
-      console.log("repsonse full", response);
       const data = response.data.tb_pessoa;
       const client = data.tb_cliente[0];
 
       const newDate = data?.dt_nascimento.split("T")[0];
-
-      console.log(client);
 
       const convertTelBR = (tel) => {
         const telBR = tel.replace(/(\d{2})(\d{5})(\d{4})/, "($1) $2-$3");
         return telBR;
       };
 
-      console.log("data", data.dt_nascimento);
       setPessoaKey(response.data.pessoa_key);
       setClient({
         name: data?.nm_pessoa,
@@ -65,8 +63,6 @@ const Simulation = () => {
     });
   }, []);
 
-  console.log(client);
-
   useEffect(() => {
     if (cliente_id) {
       Api.get(`/client/form/unity/${cliente_id}`).then((response) => {
@@ -81,6 +77,7 @@ const Simulation = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setLoading(true);
 
     const data = {
       status: "pendente",
@@ -94,18 +91,22 @@ const Simulation = () => {
 
     Api.post(`/client/form/create`, data)
       .then((response) => {
-        console.log(response);
+        setLoading(false);
         const user = localStorage.getItem("user");
         const userJson = JSON.parse(user);
         const newUser = {
           ...userJson,
           cliente_id: response.data.cliente_id,
         };
-        console.log("newUser ", newUser);
 
         localStorage.setItem("user", JSON.stringify(newUser));
+        Success({
+          message: "Simulação realizada com sucesso!",
+        });
+        navigate("/modal/simulation");
       })
       .catch((error) => {
+        setLoading(false);
         Error({
           message: error.response.data,
         });
@@ -263,7 +264,7 @@ const Simulation = () => {
             </div>
             {data && (
               <div className="button-simulation">
-                <button type="submit">Simular</button>
+                {loading ? <Spiner /> : <button type="submit">Simular</button>}
               </div>
             )}
           </div>

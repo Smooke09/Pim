@@ -4,6 +4,7 @@ import connection from "../../API/connection";
 import { Error, Success } from "../../Components/Error";
 import Input from "../../Components/Input";
 import Spiner from "../../Components/Spineer";
+import "./styles.scss";
 
 const SingUp = () => {
   const [loading, setLoading] = useState(false);
@@ -16,7 +17,6 @@ const SingUp = () => {
     nacionalidade: "",
     reside_brasil: true,
   });
-
 
   const navigate = useNavigate();
 
